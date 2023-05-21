@@ -1,15 +1,41 @@
-import { PropsWithChildren, createContext, useState } from "react";
+import { PropsWithChildren, createContext, useEffect, useState } from "react";
 import "./sass/style.scss";
+import usePrefersColorScheme from "use-prefers-color-scheme";
+
+const key = "theme";
+
+type Theme = "darkMode" | "lightMode";
+
+const getInitialState = (initialState: Theme | "no-preferenceMode"): Theme => {
+  const localStorageTheme = JSON.parse(localStorage.getItem(key) as Theme);
+
+  if (localStorageTheme === null) {
+    if (initialState === "no-preferenceMode") {
+      return "darkMode";
+    } else {
+      return initialState;
+    }
+  }
+
+  return localStorageTheme;
+};
 
 type ThemeContextState = {
-  theme: "darkMode" | "lightMode";
+  theme: Theme;
   toggleTheme: () => void;
 };
 
 export const ThemeContext = createContext({} as ThemeContextState);
 
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
-  const [theme, setTheme] = useState<"lightMode" | "darkMode">("lightMode");
+  const prefersColorScheme = usePrefersColorScheme();
+  const [theme, setTheme] = useState<Theme>(
+    getInitialState(`${prefersColorScheme}Mode`)
+  );
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(theme));
+  }, [theme]);
 
   const toggleTheme = () => {
     theme === "lightMode" ? setTheme("darkMode") : setTheme("lightMode");
