@@ -5,16 +5,25 @@
   flex-direction: column;
   justify-content: space-between;
   position: fixed;
-  height: 100vh;
+  min-height: 100vh;
   width: 103px;
   border-radius: 0px 20px 20px 0px;
   background-color: $mirage;
+
+  @include breakpoint(tablet) {
+    position: static;
+    width: 100%;
+    min-height: 80px;
+    border-radius: 0 0 0 0;
+    flex-direction: row;
+  }
 }
 
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 103px;
   width: 100%;
   overflow-y: hidden;
   aspect-ratio: 1 / 1;
@@ -22,6 +31,10 @@
   background: $cornflowerBlue;
   position: relative;
   z-index: 99;
+
+  @include breakpoint(tablet) {
+    max-width: 80px;
+  }
 
   &:before {
     content: "";
@@ -38,14 +51,32 @@
 
 .logo__image {
   width: 40px;
-  height: 40px;
-  object-fit: contain;
+
+  @include breakpoint(tablet) {
+    width: 31px;
+  }
+}
+
+.wrapper {
+  @include breakpoint(tablet) {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .themeWrapper {
   width: 100%;
   padding-bottom: 32px;
   border-bottom: 1px solid #494e6e;
+
+  @include breakpoint(tablet) {
+    height: 100%;
+    padding: 0 32px 0 0;
+    border-bottom: none;
+    border-right: 1px solid #494e6e;
+    display: flex;
+    align-items: center;
+  }
 
   input {
     appearance: none;
@@ -57,6 +88,12 @@
     height: 20px;
     margin-inline: auto;
     cursor: pointer;
+    color: $shipCove;
+    transition: color 180ms ease-in-out;
+
+    &:hover {
+      color: $selago;
+    }
   }
 }
 
@@ -67,9 +104,17 @@
   justify-content: center;
   cursor: pointer;
 
+  @include breakpoint(tablet) {
+    padding: 0 32px;
+  }
+
   img {
     width: 40px;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
+
+    @include breakpoint(tablet) {
+      width: 32px;
+    }
   }
 }
