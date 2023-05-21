@@ -17,6 +17,10 @@
     border-radius: 0 0 0 0;
     flex-direction: row;
   }
+
+  @include breakpoint(mobile) {
+    min-height: 72px;
+  }
 }
 
 .logo {
@@ -34,6 +38,10 @@
 
   @include breakpoint(tablet) {
     max-width: 80px;
+  }
+
+  @include breakpoint(mobile) {
+    max-width: 72px;
   }
 
   &:before {
@@ -54,6 +62,10 @@
 
   @include breakpoint(tablet) {
     width: 31px;
+  }
+
+  @include breakpoint(mobile) {
+    max-width: 28px;
   }
 }
 
@@ -76,6 +88,10 @@
     border-right: 1px solid #494e6e;
     display: flex;
     align-items: center;
+  }
+
+  @include breakpoint(mobile) {
+    padding: 0 24px 0 0;
   }
 
   input {
@@ -106,6 +122,10 @@
 
   @include breakpoint(tablet) {
     padding: 0 32px;
+  }
+
+  @include breakpoint(mobile) {
+    padding: 0 24px;
   }
 
   img {
