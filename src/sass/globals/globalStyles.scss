@@ -12,6 +12,11 @@ body {
   font-family: "League Spartan", sans-serif;
 }
 
+.container {
+  min-height: 100vh;
+  background-color: var(--mainBackground);
+}
+
 h1,
 h2,
 h3,

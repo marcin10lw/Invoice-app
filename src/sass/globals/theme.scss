@@ -1,0 +1,34 @@
+@use "./colors.scss" as *;
+
+$themes: (
+  mainBackground: (
+    darkTheme: $mirage_2,
+    lightTheme: $whisper,
+  ),
+  navBackground: (
+    darkTheme: $mirage,
+    lightTheme: $oxfordBlue,
+  ),
+  // textThemeColor1: (
+  //   darkTheme: $grey100,
+  //   lightTheme: $black,
+  // ),,,,
+);
+
+@mixin styles($mode) {
+  @each $key, $map in $themes {
+    @each $prop, $color in $map {
+      @if $prop == $mode {
+        --#{$key}: #{$color};
+      }
+    }
+  }
+}
+
+.darkMode {
+  @include styles("darkTheme");
+}
+
+.lightMode {
+  @include styles("lightTheme");
+}

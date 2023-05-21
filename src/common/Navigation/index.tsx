@@ -3,8 +3,13 @@ import logo from "../../assets/logo.svg";
 import avatar from "../../assets/image-avatar.jpg";
 import { ReactComponent as Moon } from "../../assets/icon-moon.svg";
 import { ReactComponent as Sun } from "../../assets/icon-sun.svg";
+import { useContext } from "react";
+import { ThemeContext } from "../../ThemeContext";
 
 const Navigation = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  console.log(theme);
+
   return (
     <nav className={styles.nav}>
       <div className={styles.logo}>
@@ -18,9 +23,14 @@ const Navigation = () => {
 
       <div className={styles.wrapper}>
         <div className={styles.themeWrapper}>
-          <input type="checkbox" id="check" />
-          <label htmlFor="check">
-            <Moon />
+          <input
+            type="checkbox"
+            id="check"
+            checked={theme === "darkMode"}
+            onChange={() => toggleTheme()}
+          />
+          <label htmlFor="check" className={styles.themeToggler}>
+            {theme === "darkMode" ? <Moon /> : <Sun />}
           </label>
         </div>
 
