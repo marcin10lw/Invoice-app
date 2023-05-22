@@ -41,10 +41,10 @@ $themes: (
   }
 }
 
-.darkMode {
+.dark {
   @include styles("darkTheme");
 }
 
-.lightMode {
+.light {
   @include styles("lightTheme");
 }

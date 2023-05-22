@@ -2,7 +2,7 @@ import { PropsWithChildren, createContext, useEffect, useState } from "react";
 import usePrefersColorScheme from "use-prefers-color-scheme";
 import { getInitialState } from "./getInitialState";
 
-export type Theme = "darkMode" | "lightMode";
+export type Theme = "dark" | "light";
 
 type ThemeContextState = {
   theme: Theme;
@@ -14,7 +14,7 @@ export const ThemeContext = createContext({} as ThemeContextState);
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const prefersColorScheme = usePrefersColorScheme();
   const [theme, setTheme] = useState<Theme>(
-    getInitialState(`${prefersColorScheme}Mode`)
+    getInitialState(`${prefersColorScheme}`)
   );
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
   }, [theme]);
 
   const toggleTheme = () => {
-    theme === "lightMode" ? setTheme("darkMode") : setTheme("lightMode");
+    theme === "light" ? setTheme("dark") : setTheme("light");
   };
 
   return (

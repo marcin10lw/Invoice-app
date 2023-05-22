@@ -1,15 +1,15 @@
 import { Theme } from "./ThemeContext";
 
 export const getInitialState = (
-  initialState: Theme | "no-preferenceMode"
+  initialState: Theme | "no-preference"
 ): Theme => {
   const localStorageTheme: Theme | null = JSON.parse(
     localStorage.getItem("theme") as string
   );
 
   if (localStorageTheme === null) {
-    if (initialState === "no-preferenceMode") {
-      return "lightMode";
+    if (initialState === "no-preference") {
+      return "light";
     } else {
       return initialState;
     }
