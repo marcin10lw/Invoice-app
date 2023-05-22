@@ -1,35 +1,31 @@
-import { useState } from "react";
 import { ReactComponent as Arrow } from "../../../../../assets/icon-arrow-down.svg";
 import styles from "./index.module.scss";
 
 const FilterInvoices = () => {
-  const [showField, setShowField] = useState(false);
-
   return (
-    <div className={styles.filter}>
-      <button
-        onClick={() => setShowField((showField) => !showField)}
-        className={styles.filter__button}
-      >
-        Filter by status
+    <div className={styles.dropdown}>
+      <button className={styles.dropdown__button}>
+        <div>
+          Filter<span> by status</span>
+        </div>
         <Arrow />
       </button>
 
-      <div className={styles.fieldWrapper}>
-        <div className={styles.filter__field}>
-          <div className={styles.filter__inputGroup}>
+      <div className={styles.dropdown__menu}>
+        <ul className={styles.dropdown__list}>
+          <li className={styles.dropdown__inputGroup}>
             <input type="checkbox" id="draft" />
             <label htmlFor="draft">Draft</label>
-          </div>
-          <div className={styles.filter__inputGroup}>
+          </li>
+          <li className={styles.dropdown__inputGroup}>
             <input type="checkbox" id="pending" />
             <label htmlFor="pending">Pending</label>
-          </div>
-          <div className={styles.filter__inputGroup}>
+          </li>
+          <li className={styles.dropdown__inputGroup}>
             <input type="checkbox" id="paid" />
             <label htmlFor="paid">Paid</label>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </div>
   );
