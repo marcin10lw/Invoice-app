@@ -26,11 +26,11 @@ const Navigation = () => {
           <input
             type="checkbox"
             id="check"
-            checked={theme === "darkMode"}
+            checked={theme === "dark"}
             onChange={() => toggleTheme()}
           />
           <label htmlFor="check" className={styles.themeToggler}>
-            {theme === "darkMode" ? <Sun /> : <Moon />}
+            {theme === "dark" ? <Sun /> : <Moon />}
           </label>
         </div>
 
