@@ -1,3 +1,4 @@
+import FilterInvoices from "./FilterInvoices";
 import styles from "./index.module.scss";
 
 const InvoicesHeader = () => {
@@ -9,6 +10,7 @@ const InvoicesHeader = () => {
           <span>There are</span> 4 <span>pending</span> invoices
         </p>
       </div>
+      <FilterInvoices />
     </header>
   );
 };

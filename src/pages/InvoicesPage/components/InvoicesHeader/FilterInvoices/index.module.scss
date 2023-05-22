@@ -1,0 +1,61 @@
+@use "../../../../../sass/style.scss" as *;
+
+.filter {
+  position: relative;
+
+  &:hover .fieldWrapper {
+    display: block;
+  }
+}
+
+.filter__button {
+  @include textBold();
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.fieldWrapper {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 192px;
+  padding-top: 22px;
+}
+
+.filter__field {
+  padding: 24px;
+  @include formField();
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.filter__inputGroup {
+  @include textBold();
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  input {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid $cornflowerBlue;
+    border-radius: 2px;
+    background-color: var(--checkboxBackground);
+
+    &:checked {
+      background: $cornflowerBlue url("../../../../../assets/icon-check.svg")
+        no-repeat center;
+    }
+  }
+
+  label {
+    cursor: pointer;
+    display: block;
+  }
+}
