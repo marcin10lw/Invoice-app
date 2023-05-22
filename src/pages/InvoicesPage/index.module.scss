@@ -1,3 +1,14 @@
+@use "../../sass/style.scss" as *;
+
 .main {
   padding-top: 78px;
+
+  @include breakpoint(tablet) {
+    padding-top: 60px;
+  }
+
+  @include breakpoint(mobile) {
+    padding-top: 32px;
+    padding-inline: 24px;
+  }
 }

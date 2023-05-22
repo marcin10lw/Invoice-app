@@ -5,7 +5,9 @@ const InvoicesHeader = () => {
     <header className={styles.header}>
       <div>
         <h1 className={styles.header__heading}>Invoices</h1>
-        <p className={styles.header__info}>There are 4 pending invoices</p>
+        <p className={styles.header__info}>
+          <span>There are</span> 4 <span>pending</span> invoices
+        </p>
       </div>
     </header>
   );
