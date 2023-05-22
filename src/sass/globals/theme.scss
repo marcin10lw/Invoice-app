@@ -9,10 +9,14 @@ $themes: (
     darkTheme: $mirage,
     lightTheme: $oxfordBlue,
   ),
-  // textThemeColor1: (
-  //   darkTheme: $grey100,
-  //   lightTheme: $black,
-  // ),,,,
+  mainTextColor: (
+    darkTheme: $white,
+    lightTheme: $vulcan,
+  ),
+  infoTextColor_1: (
+    darkTheme: $selago,
+    lightTheme: $baliHai,
+  ),
 );
 
 @mixin styles($mode) {

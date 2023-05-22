@@ -27,7 +27,7 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className={`container ${theme}`}>{children}</div>
+      <div className={`rootContainer ${theme}`}>{children}</div>
     </ThemeContext.Provider>
   );
 };

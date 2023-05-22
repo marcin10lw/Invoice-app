@@ -1,0 +1,18 @@
+@use "../../../../sass/style.scss" as *;
+
+.header__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--mainTextColor);
+  font-size: 36px;
+  line-height: 33.12px;
+  letter-spacing: -1.13px;
+  margin-bottom: 6px;
+}
+
+.header__info {
+  @include text();
+  color: var(--infoTextColor_1);
+  line-height: 15px;
+}
