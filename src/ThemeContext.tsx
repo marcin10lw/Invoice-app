@@ -7,7 +7,9 @@ const key = "theme";
 type Theme = "darkMode" | "lightMode";
 
 const getInitialState = (initialState: Theme | "no-preferenceMode"): Theme => {
-  const localStorageTheme = JSON.parse(localStorage.getItem(key) as Theme);
+  const localStorageTheme: Theme = JSON.parse(
+    localStorage.getItem(key) as string
+  );
 
   if (localStorageTheme === null) {
     if (initialState === "no-preferenceMode") {

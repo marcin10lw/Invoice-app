@@ -30,7 +30,7 @@ const Navigation = () => {
             onChange={() => toggleTheme()}
           />
           <label htmlFor="check" className={styles.themeToggler}>
-            {theme === "darkMode" ? <Moon /> : <Sun />}
+            {theme === "darkMode" ? <Sun /> : <Moon />}
           </label>
         </div>
 
