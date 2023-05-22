@@ -4,7 +4,7 @@ import avatar from "../../assets/image-avatar.jpg";
 import { ReactComponent as Moon } from "../../assets/icon-moon.svg";
 import { ReactComponent as Sun } from "../../assets/icon-sun.svg";
 import { useContext } from "react";
-import { ThemeContext } from "../../ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const Navigation = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
