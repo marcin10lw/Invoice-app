@@ -1,6 +1,7 @@
 import { PropsWithChildren, createContext, useEffect, useState } from "react";
-import usePrefersColorScheme from "use-prefers-color-scheme";
+
 import { getInitialState } from "./getInitialState";
+import usePrefersColorScheme from "use-prefers-color-scheme";
 
 export type Theme = "dark" | "light";
 

@@ -97,6 +97,10 @@
 
   input {
     appearance: none;
+
+    &:focus + .themeToggler {
+      outline: 2px solid grey;
+    }
   }
 }
 
