@@ -1,17 +1,31 @@
+import { useState } from "react";
 import { ReactComponent as Arrow } from "../../../../../assets/icon-arrow-down.svg";
 import styles from "./index.module.scss";
 
 const FilterInvoices = () => {
+  const [showFilterMenu, setShowFilterMenu] = useState(false);
+
   return (
     <div className={styles.dropdown}>
-      <button className={styles.dropdown__button}>
+      <button
+        onClick={() => setShowFilterMenu((showFilterMenu) => !showFilterMenu)}
+        className={styles.dropdown__button}
+      >
         <div>
           Filter<span> by status</span>
         </div>
-        <Arrow />
+        <Arrow
+          className={`${styles.dropdown__icon} ${
+            showFilterMenu ? styles["dropdown__icon--open"] : ""
+          }`}
+        />
       </button>
 
-      <div className={styles.dropdown__menu}>
+      <div
+        className={`${styles.dropdown__menu} ${
+          showFilterMenu ? styles["dropdown__menu--open"] : ""
+        }`}
+      >
         <ul className={styles.dropdown__list}>
           <li className={styles.dropdown__inputGroup}>
             <input type="checkbox" id="draft" />

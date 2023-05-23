@@ -2,21 +2,6 @@
 
 .dropdown {
   position: relative;
-
-  &:hover,
-  &:focus-within {
-    .dropdown__menu {
-      opacity: 1;
-      visibility: visible;
-      transform: rotateX(0) translateX(-50%);
-    }
-
-    .dropdown__button {
-      svg {
-        transform: rotate(180deg);
-      }
-    }
-  }
 }
 
 .dropdown__button {
@@ -24,10 +9,14 @@
   display: flex;
   align-items: center;
   gap: 14px;
+}
 
-  svg {
-    transition: 280ms all 120ms ease-out;
-  }
+.dropdown__icon {
+  transition: 280ms all 40ms ease-out;
+}
+
+.dropdown__icon--open {
+  transform: rotateX(180deg);
 }
 
 .dropdown__menu {
@@ -36,12 +25,18 @@
   top: 100%;
   left: 50%;
   opacity: 0;
-  visibility: hidden;
-  transform: rotateX(-90deg) translateX(-50%);
-  transform-origin: top center;
-  transition: 280ms all 120ms ease-out;
   width: 192px;
   padding-top: 22px;
+  visibility: hidden;
+  transform-origin: top center;
+  transition: 280ms all 40ms ease-out;
+  transform: rotateX(-90deg) translateX(-50%);
+}
+
+.dropdown__menu--open {
+  opacity: 1;
+  visibility: visible;
+  transform: rotateX(0) translateX(-50%);
 }
 
 .dropdown__list {

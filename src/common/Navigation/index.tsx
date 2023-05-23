@@ -8,7 +8,6 @@ import { ThemeContext } from "../../context/ThemeContext";
 
 const Navigation = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  console.log(theme);
 
   return (
     <nav className={styles.nav}>
