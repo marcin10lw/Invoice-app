@@ -1,4 +1,5 @@
 @use "../globals/theme.scss" as *;
+@use "../utils/breakpoints.scss" as *;
 
 html {
   box-sizing: border-box;
@@ -54,4 +55,10 @@ fieldset {
   border: none;
   padding: 0;
   margin: 0;
+}
+
+.mobileHidden {
+  @include breakpoint(mobile) {
+    display: none;
+  }
 }
