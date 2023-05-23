@@ -12,7 +12,7 @@ const FilterInvoices = () => {
         className={styles.dropdown__button}
       >
         <div>
-          Filter<span> by status</span>
+          Filter<span className="mobileHidden"> by status</span>
         </div>
         <Arrow
           className={`${styles.dropdown__icon} ${

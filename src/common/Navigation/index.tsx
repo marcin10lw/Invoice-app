@@ -5,20 +5,21 @@ import { ReactComponent as Moon } from "../../assets/icon-moon.svg";
 import { ReactComponent as Sun } from "../../assets/icon-sun.svg";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <nav className={styles.nav}>
-      <div className={styles.logo}>
+      <Link to="/" className={styles.logo}>
         <img
           draggable={false}
           src={logo}
           alt="logo"
           className={styles.logo__image}
         />
-      </div>
+      </Link>
 
       <div className={styles.wrapper}>
         <div className={styles.themeWrapper}>

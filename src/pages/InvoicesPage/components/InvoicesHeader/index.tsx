@@ -1,3 +1,4 @@
+import AddNewInvoice from "./AddNewInvoice";
 import FilterInvoices from "./FilterInvoices";
 import styles from "./index.module.scss";
 
@@ -10,7 +11,10 @@ const InvoicesHeader = () => {
           <span>There are</span> 4 <span>pending</span> invoices
         </p>
       </div>
-      <FilterInvoices />
+      <div className={styles.header__dynamic}>
+        <FilterInvoices />
+        <AddNewInvoice />
+      </div>
     </header>
   );
 };
