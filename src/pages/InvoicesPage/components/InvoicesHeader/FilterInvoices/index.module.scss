@@ -60,6 +60,7 @@
     border: 1px solid $cornflowerBlue;
     border-radius: 2px;
     background-color: var(--checkboxBackground);
+    cursor: pointer;
 
     &:checked {
       background: $cornflowerBlue url("../../../../../assets/icon-check.svg")

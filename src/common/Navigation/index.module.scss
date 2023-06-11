@@ -98,7 +98,7 @@
   input {
     appearance: none;
 
-    &:focus + .themeToggler {
+    &:focus-visible + .themeToggler {
       outline: 2px solid grey;
     }
   }
@@ -111,10 +111,14 @@
   margin-inline: auto;
   cursor: pointer;
   color: $shipCove;
-  transition: color 180ms ease-in-out;
+  transition: all 180ms ease-in-out;
 
   &:hover {
     color: $selago;
+
+    svg {
+      transform: scale(1.1);
+    }
   }
 }
 

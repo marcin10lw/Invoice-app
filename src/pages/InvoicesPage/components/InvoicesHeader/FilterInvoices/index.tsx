@@ -1,10 +1,23 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 import { ReactComponent as Arrow } from "../../../../../assets/icon-arrow-down.svg";
 import styles from "./index.module.scss";
 
 const FilterInvoices = () => {
   const [showFilterMenu, setShowFilterMenu] = useState(false);
+  const [statusTags, setStautsTags] = useState<string[]>([]);
+
+  const setTags = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+
+    setStautsTags((statusTags) => {
+      if (statusTags.some((tag) => tag === value)) {
+        return statusTags.filter((tag) => tag !== value);
+      }
+
+      return [...statusTags, value];
+    });
+  };
 
   return (
     <div className={styles.dropdown}>
@@ -29,15 +42,25 @@ const FilterInvoices = () => {
       >
         <ul className={styles.dropdown__list}>
           <li className={styles.dropdown__inputGroup}>
-            <input type="checkbox" id="draft" />
+            <input
+              type="checkbox"
+              id="draft"
+              value="draft"
+              onChange={setTags}
+            />
             <label htmlFor="draft">Draft</label>
           </li>
           <li className={styles.dropdown__inputGroup}>
-            <input type="checkbox" id="pending" />
+            <input
+              type="checkbox"
+              id="pending"
+              value="pending"
+              onChange={setTags}
+            />
             <label htmlFor="pending">Pending</label>
           </li>
           <li className={styles.dropdown__inputGroup}>
-            <input type="checkbox" id="paid" />
+            <input type="checkbox" id="paid" value="paid" onChange={setTags} />
             <label htmlFor="paid">Paid</label>
           </li>
         </ul>
