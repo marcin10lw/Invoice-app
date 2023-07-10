@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 
-import { ReactComponent as Arrow } from "../../../../../assets/icon-arrow-down.svg";
+import { ReactComponent as Arrow } from "assets/icon-arrow-down.svg";
 import styles from "./index.module.scss";
 
 const FilterInvoices = () => {

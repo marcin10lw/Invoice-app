@@ -1,4 +1,4 @@
-import { ReactComponent as Plus } from "../../../../../assets/icon-plus.svg";
+import { ReactComponent as Plus } from "assets/icon-plus.svg";
 import styles from "./index.module.scss";
 
 const AddNewInvoice = () => {

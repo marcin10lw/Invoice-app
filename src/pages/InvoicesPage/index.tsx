@@ -1,4 +1,4 @@
-import Container from "../../common/Container";
+import Container from "common/Container";
 import InvoicesHeader from "./components/InvoicesHeader";
 import styles from "./index.module.scss";
 

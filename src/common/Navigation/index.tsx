@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../context/ThemeContext";
 import { Link } from "react-router-dom";
 
-import { ReactComponent as Moon } from "../../assets/icon-moon.svg";
-import { ReactComponent as Sun } from "../../assets/icon-sun.svg";
+import { ThemeContext } from "context/ThemeContext";
+import { ReactComponent as Moon } from "assets/icon-moon.svg";
+import { ReactComponent as Sun } from "assets/icon-sun.svg";
+import logo from "assets/logo.svg";
+import avatar from "assets/image-avatar.jpg";
 import styles from "./index.module.scss";
-import logo from "../../assets/logo.svg";
-import avatar from "../../assets/image-avatar.jpg";
 
 const Navigation = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
