@@ -5,6 +5,10 @@ $themes: (
     darkTheme: $mirage_2,
     lightTheme: $whisper,
   ),
+  mainBackground_2: (
+    darkTheme: $mirage,
+    lightTheme: $white,
+  ),
   navBackground: (
     darkTheme: $mirage,
     lightTheme: $oxfordBlue,
@@ -28,6 +32,14 @@ $themes: (
   infoTextColor_1: (
     darkTheme: $selago,
     lightTheme: $baliHai,
+  ),
+  infoTextColor_2: (
+    darkTheme: $selago,
+    lightTheme: $shipCove,
+  ),
+  infoTextColor_3: (
+    darkTheme: $white,
+    lightTheme: $yonder,
   ),
 );
 

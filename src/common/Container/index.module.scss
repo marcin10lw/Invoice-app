@@ -1,5 +1,11 @@
+@use "../../sass/style.scss" as *;
+
 .container {
   max-width: 730px;
   width: 100%;
   margin-inline: auto;
+
+  @include breakpoint(mobile) {
+    max-width: 100%;
+  }
 }
