@@ -10,14 +10,15 @@ const InvoicesList = () => {
   return (
     <ul className={styles.invoicesList}>
       {data?.map(({ id, clientName, paymentDue, status, total }) => (
-        <InvoiceItem
-          key={id}
-          id={id}
-          paymentDue={paymentDue}
-          clientName={clientName}
-          total={total}
-          status={status}
-        />
+        <li key={id}>
+          <InvoiceItem
+            id={id}
+            paymentDue={paymentDue}
+            clientName={clientName}
+            total={total}
+            status={status}
+          />
+        </li>
       ))}
     </ul>
   );

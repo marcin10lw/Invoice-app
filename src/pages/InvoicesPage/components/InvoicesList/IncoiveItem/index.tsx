@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { Invoice } from "types";
 import { ReactComponent as Arrow } from "assets/icon-arrow-right.svg";
 import styles from "./index.module.scss";
@@ -15,7 +17,7 @@ const InvoiceItem = ({
   }).format(total);
 
   return (
-    <li className={styles.invoiceWrapper}>
+    <Link to={`/invoices/${id}`} className={styles.invoiceWrapper}>
       <article className={styles.invoice}>
         <div className={styles.invoice__leftContent}>
           <div className={styles.leftContentWrapper}>
@@ -38,7 +40,7 @@ const InvoiceItem = ({
           <Arrow className={styles.invoice__arrow} />
         </div>
       </article>
-    </li>
+    </Link>
   );
 };
 

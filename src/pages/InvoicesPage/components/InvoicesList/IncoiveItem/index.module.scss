@@ -1,15 +1,19 @@
 @use "../../../../../sass/style.scss" as *;
 
 .invoiceWrapper {
+  display: block;
   background-color: var(--mainBackground_2);
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
   padding: 16px 32px;
   border-radius: 8px;
   cursor: pointer;
-  transition: outline 200ms ease-in-out;
 
   &:hover {
     outline: 1px solid $cornflowerBlue;
+
+    .invoice__arrow {
+      transform: translateX(8px);
+    }
   }
 }
 
