@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Invoice } from "types";
 import { ReactComponent as Arrow } from "assets/icon-arrow-right.svg";
 import styles from "./index.module.scss";
+import { getFormattedTotal, getStatusClassName } from "./utils";
 
 const InvoiceItem = ({
   id,
@@ -11,11 +12,6 @@ const InvoiceItem = ({
   total,
   status,
 }: Invoice) => {
-  const formattedTotal = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "GBP",
-  }).format(total);
-
   return (
     <Link to={`/invoices/${id}`} className={styles.invoiceWrapper}>
       <article className={styles.invoice}>
@@ -31,8 +27,12 @@ const InvoiceItem = ({
         </div>
         <div className={styles.invoice__rightContent}>
           <div className={styles.rightContentWrapper}>
-            <p className={styles.invoice__total}>{formattedTotal}</p>
-            <div className={styles.invoice__status}>
+            <p className={styles.invoice__total}>{getFormattedTotal(total)}</p>
+            <div
+              className={`${styles.invoice__status} ${
+                styles[getStatusClassName(status)]
+              }`}
+            >
               <p>{status}</p>
             </div>
           </div>

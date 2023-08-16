@@ -76,12 +76,10 @@
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  background-color: $shamrockLight;
 
   p {
     @include textBold();
     text-transform: capitalize;
-    color: $shamrockFull;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -92,7 +90,42 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background-color: $shamrockFull;
+    }
+  }
+}
+
+.invoice__status--paid {
+  background-color: $paidBackground;
+
+  p {
+    color: $paidColor;
+
+    &::before {
+      background-color: $paidColor;
+    }
+  }
+}
+
+.invoice__status--pending {
+  background-color: $pendingBackground;
+
+  p {
+    color: $pendingColor;
+
+    &::before {
+      background-color: $pendingColor;
+    }
+  }
+}
+
+.invoice__status--draft {
+  background-color: $draftBackground;
+
+  p {
+    color: $draftColor;
+
+    &::before {
+      background-color: $draftColor;
     }
   }
 }
