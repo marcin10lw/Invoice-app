@@ -7,3 +7,5 @@ export type Invoice = {
   total: number;
   status: InvoiceStatus;
 };
+
+export type StatusTag = InvoiceStatus | "total";

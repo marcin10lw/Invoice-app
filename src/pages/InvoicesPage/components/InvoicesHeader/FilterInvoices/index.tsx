@@ -1,26 +1,16 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 
+import { StatusTag } from "types";
 import { ReactComponent as Arrow } from "assets/icon-arrow-down.svg";
 import styles from "./index.module.scss";
-import { InvoiceStatus } from "types";
 
-type StatusTag = InvoiceStatus | "total";
+type FilterInvoicesProps = {
+  setTag: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  statusTag: StatusTag;
+};
 
-const FilterInvoices = () => {
+const FilterInvoices = ({ setTag, statusTag }: FilterInvoicesProps) => {
   const [showFilterMenu, setShowFilterMenu] = useState(false);
-  const [statusTag, setStautsTag] = useState<StatusTag>("total");
-
-  const setTag = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value as StatusTag;
-
-    setStautsTag((statusTag) => {
-      if (statusTag === value) {
-        return "total";
-      } else {
-        return value;
-      }
-    });
-  };
 
   return (
     <div className={styles.dropdown}>

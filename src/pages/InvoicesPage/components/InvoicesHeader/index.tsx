@@ -1,8 +1,14 @@
+import { StatusTag } from "types";
 import AddNewInvoice from "./AddNewInvoice";
 import FilterInvoices from "./FilterInvoices";
 import styles from "./index.module.scss";
 
-const InvoicesHeader = () => {
+type FilterInvoicesProps = {
+  setTag: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  statusTag: StatusTag;
+};
+
+const InvoicesHeader = ({ statusTag, setTag }: FilterInvoicesProps) => {
   return (
     <header className={styles.header}>
       <div>
@@ -12,7 +18,7 @@ const InvoicesHeader = () => {
         </p>
       </div>
       <div className={styles.header__dynamic}>
-        <FilterInvoices />
+        <FilterInvoices setTag={setTag} statusTag={statusTag} />
         <AddNewInvoice />
       </div>
     </header>
