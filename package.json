@@ -11,12 +11,14 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "@tanstack/react-query": "^4.32.6",
     "axios": "^1.4.0",
     "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-loading-skeleton": "^3.3.1",
+    "react-redux": "^8.1.2",
     "react-router-dom": "^6.11.2",
     "sass": "^1.62.1",
     "use-prefers-color-scheme": "^1.1.3",
