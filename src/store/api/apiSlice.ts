@@ -3,10 +3,10 @@ import { Invoice } from "types";
 
 export const apiSlice = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3500" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "" }),
   endpoints: (builder) => ({
     getInvoices: builder.query<Invoice[], undefined>({
-      query: () => "/invoices",
+      query: () => "/data.json",
     }),
     addInvoice: builder.mutation({
       query: (invoice) => ({
