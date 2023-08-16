@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import format from "date-fns/format";
 
 import { Invoice } from "types";
 import { ReactComponent as Arrow } from "assets/icon-arrow-right.svg";
@@ -12,6 +13,8 @@ const InvoiceItem = ({
   total,
   status,
 }: Invoice) => {
+  const formattedPaymentDue = format(new Date(paymentDue), "dd LLL yyyy");
+
   return (
     <Link to={`/invoices/${id}`} className={styles.invoiceWrapper}>
       <article className={styles.invoice}>
@@ -21,7 +24,9 @@ const InvoiceItem = ({
               <span>#</span>
               {id}
             </h2>
-            <p className={styles.invoice__paymentDue}>Due {paymentDue}</p>
+            <p className={styles.invoice__paymentDue}>
+              Due {formattedPaymentDue}
+            </p>
           </div>
           <p className={styles.invoice__clientName}>{clientName}</p>
         </div>

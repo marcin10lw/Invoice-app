@@ -7,7 +7,6 @@ const placeholderArray = Array.from({ length: 7 }, (_, index) => index + 1);
 
 type InvoicesListProps = {
   statusTag: StatusTag;
-
   invoices: Invoice[] | undefined;
   isLoading: boolean;
   isSuccess: boolean;
