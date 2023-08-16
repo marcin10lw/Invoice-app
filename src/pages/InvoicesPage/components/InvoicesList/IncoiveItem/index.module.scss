@@ -4,9 +4,18 @@
   display: block;
   background-color: var(--mainBackground_2);
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
-  padding: 16px 32px;
+  padding: 16px 24px 16px 32px;
   border-radius: 8px;
   cursor: pointer;
+
+  @include breakpoint(tablet) {
+    padding: 16px 24px;
+  }
+
+  @include breakpoint(mobile) {
+    position: relative;
+    padding: 25px 24px 22px;
+  }
 
   &:hover {
     outline: 1px solid $cornflowerBlue;
@@ -21,17 +30,36 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include breakpoint(mobile) {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .invoice__leftContent {
   display: grid;
   grid-template-columns: minmax(0, 192px) auto;
   align-items: center;
+
+  @include breakpoint(tablet) {
+    grid-template-columns: minmax(0, 184px) auto;
+  }
+
+  @include breakpoint(mobile) {
+    width: 100%;
+    grid-template-columns: repeat(2, auto);
+  }
 }
 
 .leftContentWrapper {
   display: flex;
   justify-content: space-between;
+
+  @include breakpoint(mobile) {
+    flex-direction: column;
+    gap: 24px;
+  }
 }
 
 .invoice__id {
@@ -44,7 +72,6 @@
 
 .invoice__paymentDue {
   @include text();
-  margin: 0 0 0 44px;
   color: var(--infoTextColor_2);
 }
 
@@ -52,11 +79,25 @@
   @include text();
   margin: 0 0 0 59px;
   color: var(--infoTextColor_3);
+
+  @include breakpoint(tablet) {
+    margin: 0 0 0 52px;
+  }
+
+  @include breakpoint(mobile) {
+    align-self: flex-start;
+    margin: 0;
+    text-align: end;
+  }
 }
 
 .invoice__rightContent {
   display: flex;
   align-items: center;
+
+  @include breakpoint(mobile) {
+    width: 100%;
+  }
 }
 
 .rightContentWrapper {
@@ -67,6 +108,7 @@
 
 .invoice__total {
   @include textBold();
+  line-height: 24px;
 }
 
 .invoice__status {
@@ -76,6 +118,12 @@
   align-items: center;
   justify-content: center;
   border-radius: 6px;
+
+  @include breakpoint(mobile) {
+    position: absolute;
+    right: 24px;
+    bottom: 28px;
+  }
 
   p {
     @include textBold();
@@ -132,4 +180,8 @@
 
 .invoice__arrow {
   margin: 0 0 0 20px;
+
+  @include breakpoint(mobile) {
+    display: none;
+  }
 }
