@@ -1,17 +1,17 @@
-import { useQuery } from "@tanstack/react-query";
+import { useGetInvoicesQuery } from "store/api/apiSlice";
 
-import { fetchInvoices } from "services/fetchInvoices";
 import InvoiceItem from "./IncoiveItem";
 import styles from "./index.module.scss";
 import PlaceholderItem from "./PlaceholderItem";
 
 const InvoicesList = () => {
-  const { data, status } = useQuery(["invoices"], fetchInvoices);
+  const { data, isLoading, isSuccess, isError } =
+    useGetInvoicesQuery(undefined);
   const placeholderArray = Array.from({ length: 7 }, (_, index) => index + 1);
 
   return (
     <ul className={styles.invoicesList}>
-      {status === "success" &&
+      {isSuccess &&
         data?.map(({ id, clientName, paymentDue, status, total }) => (
           <li key={id}>
             <InvoiceItem
@@ -24,7 +24,7 @@ const InvoicesList = () => {
           </li>
         ))}
 
-      {status === "loading" &&
+      {isLoading &&
         placeholderArray.map((item) => <PlaceholderItem key={item} />)}
     </ul>
   );

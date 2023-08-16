@@ -22,8 +22,6 @@ const FilterInvoices = () => {
     });
   };
 
-  console.log(statusTag);
-
   return (
     <div className={styles.dropdown}>
       <button
