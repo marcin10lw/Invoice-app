@@ -2,22 +2,27 @@ import { ChangeEvent, useState } from "react";
 
 import { ReactComponent as Arrow } from "assets/icon-arrow-down.svg";
 import styles from "./index.module.scss";
+import { InvoiceStatus } from "types";
+
+type StatusTag = InvoiceStatus | "total";
 
 const FilterInvoices = () => {
   const [showFilterMenu, setShowFilterMenu] = useState(false);
-  const [statusTags, setStautsTags] = useState<string[]>([]);
+  const [statusTag, setStautsTag] = useState<StatusTag>("total");
 
-  const setTags = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
+  const setTag = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value as StatusTag;
 
-    setStautsTags((statusTags) => {
-      if (statusTags.some((tag) => tag === value)) {
-        return statusTags.filter((tag) => tag !== value);
+    setStautsTag((statusTag) => {
+      if (statusTag === value) {
+        return "total";
+      } else {
+        return value;
       }
-
-      return [...statusTags, value];
     });
   };
+
+  console.log(statusTag);
 
   return (
     <div className={styles.dropdown}>
@@ -46,7 +51,8 @@ const FilterInvoices = () => {
               type="checkbox"
               id="draft"
               value="draft"
-              onChange={setTags}
+              onChange={setTag}
+              checked={statusTag === "draft"}
             />
             <label htmlFor="draft">Draft</label>
           </li>
@@ -55,12 +61,19 @@ const FilterInvoices = () => {
               type="checkbox"
               id="pending"
               value="pending"
-              onChange={setTags}
+              onChange={setTag}
+              checked={statusTag === "pending"}
             />
             <label htmlFor="pending">Pending</label>
           </li>
           <li className={styles.dropdown__inputGroup}>
-            <input type="checkbox" id="paid" value="paid" onChange={setTags} />
+            <input
+              type="checkbox"
+              id="paid"
+              value="paid"
+              onChange={setTag}
+              checked={statusTag === "paid"}
+            />
             <label htmlFor="paid">Paid</label>
           </li>
         </ul>
