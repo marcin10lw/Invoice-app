@@ -6,15 +6,21 @@ import styles from "./index.module.scss";
 type FilterInvoicesProps = {
   setTag: (event: React.ChangeEvent<HTMLInputElement>) => void;
   statusTag: StatusTag;
+  filteredInvoicesAmount: number | undefined;
 };
 
-const InvoicesHeader = ({ statusTag, setTag }: FilterInvoicesProps) => {
+const InvoicesHeader = ({
+  statusTag,
+  filteredInvoicesAmount,
+  setTag,
+}: FilterInvoicesProps) => {
   return (
     <header className={styles.header}>
       <div>
         <h1 className={styles.header__heading}>Invoices</h1>
         <p className={styles.header__info}>
-          <span>There are</span> 4 <span>pending</span> invoices
+          <span>There are</span> {filteredInvoicesAmount}{" "}
+          <span>{statusTag}</span> invoices
         </p>
       </div>
       <div className={styles.header__dynamic}>
