@@ -1,0 +1,28 @@
+@use "../../sass/style.scss" as *;
+
+.main {
+  padding-top: 65px;
+
+  @include breakpoint(tablet) {
+    padding-top: 50px;
+  }
+
+  @include breakpoint(mobile) {
+    padding-top: 32px;
+    padding-inline: 24px;
+  }
+}
+
+.goBack {
+  @include textBold();
+
+  &:hover {
+    color: $shipCove;
+  }
+
+  &::before {
+    content: url("../../assets/icon-arrow-left.svg");
+    display: inline-block;
+    margin: 0 24px 0 0;
+  }
+}

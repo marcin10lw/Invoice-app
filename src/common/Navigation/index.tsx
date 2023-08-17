@@ -13,7 +13,7 @@ const Navigation = () => {
 
   return (
     <nav className={styles.nav}>
-      <Link to="/" className={styles.logo}>
+      <Link to="/invoices" className={styles.logo}>
         <img
           draggable={false}
           src={logo}
