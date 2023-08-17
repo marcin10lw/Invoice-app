@@ -10,7 +10,7 @@ import { filterInvoices } from "./filterInvoices";
 
 const InvoicesPage = () => {
   const {
-    data: invoices,
+    data: invoices = [],
     isLoading,
     isSuccess,
     isError,
@@ -39,11 +39,11 @@ const InvoicesPage = () => {
         <InvoicesHeader
           setTag={setTag}
           statusTag={statusTag}
-          filteredInvoicesAmount={filteredInvoices?.length}
+          filteredInvoicesAmount={filteredInvoices.length}
         />
         <InvoicesList
           filteredInvoices={filteredInvoices}
-          areInvoicesEmpty={!invoices?.length}
+          areInvoicesEmpty={invoices.length <= 0}
           isError={isError}
           isLoading={isLoading}
           isSuccess={isSuccess}
