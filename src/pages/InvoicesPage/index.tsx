@@ -6,6 +6,7 @@ import Container from "common/Container";
 import InvoicesHeader from "./components/InvoicesHeader";
 import InvoicesList from "./components/InvoicesList";
 import styles from "./index.module.scss";
+import { filterInvoices } from "./filterInvoices";
 
 const InvoicesPage = () => {
   const {
@@ -15,6 +16,8 @@ const InvoicesPage = () => {
     isError,
   } = useGetInvoicesQuery(undefined);
   const [statusTag, setStautsTag] = useState<StatusTag>("total");
+
+  const filteredInvoices = filterInvoices(invoices, statusTag);
 
   const setTag = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value as StatusTag;
@@ -28,13 +31,7 @@ const InvoicesPage = () => {
     });
   };
 
-  const filteredInvoices = invoices?.filter((invoice) => {
-    if (statusTag === "total") {
-      return true;
-    }
-
-    return invoice.status === statusTag;
-  });
+  console.log(invoices);
 
   return (
     <Container>
@@ -45,8 +42,8 @@ const InvoicesPage = () => {
           filteredInvoicesAmount={filteredInvoices?.length}
         />
         <InvoicesList
-          statusTag={statusTag}
-          invoices={filteredInvoices}
+          filteredInvoices={filteredInvoices}
+          areInvoicesEmpty={!invoices?.length}
           isError={isError}
           isLoading={isLoading}
           isSuccess={isSuccess}
