@@ -1,20 +1,22 @@
-import { Invoice, StatusTag } from "types";
+import { Invoice } from "types";
 import PlaceholderItem from "./PlaceholderItem";
 import InvoiceItem from "./IncoiveItem";
 import styles from "./index.module.scss";
+import EmptyView from "../EmptyView";
 
 const placeholderArray = Array.from({ length: 7 }, (_, index) => index + 1);
 
 type InvoicesListProps = {
-  statusTag: StatusTag;
-  invoices: Invoice[] | undefined;
+  filteredInvoices: Invoice[] | undefined;
+  areInvoicesEmpty: boolean;
   isLoading: boolean;
   isSuccess: boolean;
   isError: boolean;
 };
 
 const InvoicesList = ({
-  invoices,
+  filteredInvoices,
+  areInvoicesEmpty,
   isError,
   isLoading,
   isSuccess,
@@ -22,17 +24,20 @@ const InvoicesList = ({
   return (
     <ul className={styles.invoicesList}>
       {isSuccess &&
-        invoices?.map(({ id, clientName, paymentDue, status, total }) => (
-          <li key={id}>
-            <InvoiceItem
-              id={id}
-              paymentDue={paymentDue}
-              clientName={clientName}
-              total={total}
-              status={status}
-            />
-          </li>
-        ))}
+        !areInvoicesEmpty &&
+        filteredInvoices?.map(
+          ({ id, clientName, paymentDue, status, total }) => (
+            <li key={id}>
+              <InvoiceItem
+                id={id}
+                paymentDue={paymentDue}
+                clientName={clientName}
+                total={total}
+                status={status}
+              />
+            </li>
+          )
+        )}
 
       {isLoading &&
         placeholderArray.map((item) => <PlaceholderItem key={item} />)}

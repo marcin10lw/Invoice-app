@@ -1,0 +1,42 @@
+@use "../../../../sass/style.scss" as *;
+
+.empty {
+  margin: 140px 0 0;
+  text-align: center;
+
+  @include breakpoint(tablet) {
+    margin: 205px 0 0;
+  }
+
+  @include breakpoint(mobile) {
+    margin: 102px 0 0;
+
+    img {
+      max-width: 192px;
+      width: 100%;
+    }
+  }
+}
+
+.empty__info {
+  margin: 66px 0 0;
+
+  @include breakpoint(mobile) {
+    margin: 42px 0 0;
+  }
+
+  h2 {
+    @include textBold();
+    font-size: 24px;
+    letter-spacing: -0.75px;
+    line-height: normal;
+  }
+
+  p {
+    @include text();
+    line-height: 15px;
+    margin: 23px auto 0;
+    max-width: 195px;
+    color: var(--infoTextColor_1);
+  }
+}
