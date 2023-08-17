@@ -1,0 +1,68 @@
+@use "../../sass/style.scss" as *;
+
+.invoice__status {
+  width: 104px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+
+  @include breakpoint(mobile) {
+    position: absolute;
+    right: 24px;
+    bottom: 28px;
+  }
+
+  p {
+    @include textBold();
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.invoice__status--paid {
+  background-color: $paidBackground;
+
+  p {
+    color: $paidColor;
+
+    &::before {
+      background-color: $paidColor;
+    }
+  }
+}
+
+.invoice__status--pending {
+  background-color: $pendingBackground;
+
+  p {
+    color: $pendingColor;
+
+    &::before {
+      background-color: $pendingColor;
+    }
+  }
+}
+
+.invoice__status--draft {
+  background-color: $draftBackground;
+
+  p {
+    color: $draftColor;
+
+    &::before {
+      background-color: $draftColor;
+    }
+  }
+}
