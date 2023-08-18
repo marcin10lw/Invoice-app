@@ -36,6 +36,8 @@ const InvoicesPage = () => {
 
   const placeholderArray = Array.from({ length: 7 }, (_, index) => index + 1);
 
+  console.log(invoices);
+
   return (
     <Container>
       <main className={styles.main}>

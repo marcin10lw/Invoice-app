@@ -7,8 +7,6 @@ import Menu from "./Menu";
 const InvoicePage = () => {
   const { id } = useParams();
 
-  console.log(id);
-
   return (
     <Container>
       <main className={styles.main}>

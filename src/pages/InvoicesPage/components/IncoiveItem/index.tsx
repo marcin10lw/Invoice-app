@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom";
 import format from "date-fns/format";
 
-import { Invoice } from "types";
-import { ReactComponent as Arrow } from "assets/icon-arrow-right.svg";
+import { Invoice, InvoiceStatus } from "types";
 import { getFormattedTotal } from "./utils";
-import styles from "./index.module.scss";
+import { ReactComponent as Arrow } from "assets/icon-arrow-right.svg";
 import Status from "common/Status";
+import styles from "./index.module.scss";
+
+type InvoiceItemProps = {
+  id: string;
+  paymentDue: string;
+  clientName: string;
+  total: number;
+  status: InvoiceStatus;
+};
 
 const InvoiceItem = ({
   id,
@@ -13,7 +21,7 @@ const InvoiceItem = ({
   clientName,
   total,
   status,
-}: Invoice) => {
+}: InvoiceItemProps) => {
   const formattedPaymentDue = format(new Date(paymentDue), "dd LLL yyyy");
 
   return (
