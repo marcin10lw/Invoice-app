@@ -1,0 +1,36 @@
+@use "../../sass/style.scss" as *;
+
+.error {
+  text-align: center;
+  margin: 120px 0 0;
+  color: var(--mainTextColor);
+
+  @include breakpoint(tablet) {
+    margin: 80px 0 0;
+  }
+}
+
+.error__icon {
+  width: 35px;
+  height: 35px;
+}
+
+.error__info {
+  margin: 10px 0 0;
+
+  h2 {
+    @include textBold();
+    font-size: 24px;
+    letter-spacing: -0.75px;
+    line-height: normal;
+  }
+
+  p {
+    @include text();
+    font-size: 16px;
+    line-height: 15px;
+    margin: 8px auto 0;
+    max-width: 195px;
+    color: var(--infoTextColor_1);
+  }
+}

@@ -9,6 +9,7 @@ import InvoiceItem from "./components/IncoiveItem";
 import PlaceholderItem from "./components/PlaceholderItem";
 import EmptyView from "./components/EmptyView";
 import styles from "./index.module.scss";
+import Error from "common/Error";
 
 const InvoicesPage = () => {
   const {
@@ -43,7 +44,7 @@ const InvoicesPage = () => {
           statusTag={statusTag}
           filteredInvoicesAmount={filteredInvoices.length}
         />
-        {/* {isSuccess &&
+        {isSuccess &&
           (!!invoices.length ? (
             <ul className={styles.invoicesList}>
               {filteredInvoices?.map(
@@ -69,9 +70,8 @@ const InvoicesPage = () => {
               <PlaceholderItem key={item} />
             ))}
           </ul>
-        )} */}
-
-        <EmptyView />
+        )}
+        {isError && <Error />}
       </main>
     </Container>
   );
