@@ -1,11 +1,9 @@
 @use "../../../../../sass/style.scss" as *;
 
 .invoiceWrapper {
+  @include mainBlock();
   display: block;
-  background-color: var(--mainBackground_2);
-  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.1);
   padding: 16px 24px 16px 32px;
-  border-radius: 8px;
   cursor: pointer;
 
   @include breakpoint(tablet) {
@@ -111,77 +109,18 @@
   line-height: 24px;
 }
 
-.invoice__status {
-  width: 104px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-
-  @include breakpoint(mobile) {
-    position: absolute;
-    right: 24px;
-    bottom: 28px;
-  }
-
-  p {
-    @include textBold();
-    text-transform: capitalize;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    &::before {
-      content: "";
-      display: block;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-  }
-}
-
-.invoice__status--paid {
-  background-color: $paidBackground;
-
-  p {
-    color: $paidColor;
-
-    &::before {
-      background-color: $paidColor;
-    }
-  }
-}
-
-.invoice__status--pending {
-  background-color: $pendingBackground;
-
-  p {
-    color: $pendingColor;
-
-    &::before {
-      background-color: $pendingColor;
-    }
-  }
-}
-
-.invoice__status--draft {
-  background-color: $draftBackground;
-
-  p {
-    color: $draftColor;
-
-    &::before {
-      background-color: $draftColor;
-    }
-  }
-}
-
 .invoice__arrow {
   margin: 0 0 0 20px;
 
   @include breakpoint(mobile) {
     display: none;
+  }
+}
+
+.invoice__status {
+  @include breakpoint(mobile) {
+    position: absolute;
+    right: 24px;
+    bottom: 28px;
   }
 }

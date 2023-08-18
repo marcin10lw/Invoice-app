@@ -25,6 +25,14 @@ $themes: (
     darkTheme: $mirage,
     lightTheme: $selago,
   ),
+  editBackground: (
+    darkTheme: $ebonyClay,
+    lightTheme: $selago_2,
+  ),
+  editBackgroundHover: (
+    darkTheme: $white,
+    lightTheme: $selago,
+  ),
   mainTextColor: (
     darkTheme: $white,
     lightTheme: $vulcan,
@@ -39,6 +47,10 @@ $themes: (
   ),
   infoTextColor_3: (
     darkTheme: $white,
+    lightTheme: $yonder,
+  ),
+  infoTextColor_4: (
+    darkTheme: $selago,
     lightTheme: $yonder,
   ),
 );

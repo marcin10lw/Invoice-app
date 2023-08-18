@@ -1,0 +1,88 @@
+@use "../../../sass/style.scss" as *;
+
+.menuWrapper {
+  @include mainBlock();
+  margin: 30px 0 0;
+  padding: 20px 32px;
+
+  @include breakpoint(mobile) {
+    padding: 24px;
+  }
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu__status {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  span {
+    color: var(--infoTextColor_4);
+  }
+
+  @include breakpoint(mobile) {
+    width: 100%;
+    justify-content: space-between;
+
+    span {
+      font-size: 13px;
+    }
+  }
+}
+
+.buttonsWrapper {
+  @include breakpoint(mobile) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 22px 24px;
+    background-color: var(--mainBackground_2);
+  }
+}
+
+.menu__buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @include breakpoint(mobile) {
+    justify-content: center;
+  }
+}
+
+.menu__button {
+  @include baseButton();
+  color: $white;
+}
+
+.menu__button--edit {
+  background-color: var(--editBackground);
+  color: var(--infoTextColor_2);
+
+  &:hover {
+    background-color: var(--editBackgroundHover);
+    color: $shipCove;
+  }
+}
+
+.menu__button--delete {
+  background-color: $burntSienna;
+
+  &:hover {
+    background-color: $monaLisa;
+  }
+}
+
+.menu__button--mark {
+  background-color: $cornflowerBlue;
+
+  &:hover {
+    background-color: $heliotrope;
+  }
+}
