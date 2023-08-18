@@ -1,8 +1,8 @@
-export const getFormattedTotal = (total: number) => {
+export const getFormattedAmount = (amount: number) => {
   const formattedTotal = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "GBP",
-  }).format(total);
+  }).format(amount);
 
   return formattedTotal;
 };
