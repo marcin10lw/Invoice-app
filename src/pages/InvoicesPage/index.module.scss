@@ -12,3 +12,18 @@
     padding-inline: 24px;
   }
 }
+
+.invoicesList {
+  margin: 64px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include breakpoint(tablet) {
+    margin: 55px 0 0;
+  }
+
+  @include breakpoint(mobile) {
+    margin: 32px 0 0;
+  }
+}

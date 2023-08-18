@@ -2,11 +2,13 @@ import { useState, ChangeEvent } from "react";
 
 import { useGetInvoicesQuery } from "store/api/apiSlice";
 import { StatusTag } from "types";
+import { filterInvoices } from "./filterInvoices";
 import Container from "common/Container";
 import InvoicesHeader from "./components/InvoicesHeader";
-import InvoicesList from "./components/InvoicesList";
+import InvoiceItem from "./components/IncoiveItem";
+import PlaceholderItem from "./components/PlaceholderItem";
+import EmptyView from "./components/EmptyView";
 import styles from "./index.module.scss";
-import { filterInvoices } from "./filterInvoices";
 
 const InvoicesPage = () => {
   const {
@@ -31,7 +33,7 @@ const InvoicesPage = () => {
     });
   };
 
-  console.log(invoices);
+  const placeholderArray = Array.from({ length: 7 }, (_, index) => index + 1);
 
   return (
     <Container>
@@ -41,13 +43,35 @@ const InvoicesPage = () => {
           statusTag={statusTag}
           filteredInvoicesAmount={filteredInvoices.length}
         />
-        <InvoicesList
-          filteredInvoices={filteredInvoices}
-          areInvoicesEmpty={invoices.length <= 0}
-          isError={isError}
-          isLoading={isLoading}
-          isSuccess={isSuccess}
-        />
+        {/* {isSuccess &&
+          (!!invoices.length ? (
+            <ul className={styles.invoicesList}>
+              {filteredInvoices?.map(
+                ({ id, clientName, paymentDue, status, total }) => (
+                  <li key={id}>
+                    <InvoiceItem
+                      id={id}
+                      paymentDue={paymentDue}
+                      clientName={clientName}
+                      total={total}
+                      status={status}
+                    />
+                  </li>
+                )
+              )}
+            </ul>
+          ) : (
+            <EmptyView />
+          ))}
+        {isLoading && (
+          <ul className={styles.invoicesList}>
+            {placeholderArray.map((item) => (
+              <PlaceholderItem key={item} />
+            ))}
+          </ul>
+        )} */}
+
+        <EmptyView />
       </main>
     </Container>
   );
