@@ -6,7 +6,7 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "" }),
   endpoints: (builder) => ({
     getInvoices: builder.query<Invoice[], undefined>({
-      query: () => "/public/data.json",
+      query: () => "/data.json",
     }),
     addInvoice: builder.mutation({
       query: (invoice) => ({
