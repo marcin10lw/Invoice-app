@@ -3,8 +3,9 @@ import format from "date-fns/format";
 
 import { Invoice } from "types";
 import { ReactComponent as Arrow } from "assets/icon-arrow-right.svg";
+import { getFormattedTotal } from "./utils";
 import styles from "./index.module.scss";
-import { getFormattedTotal, getStatusClassName } from "./utils";
+import Status from "common/Status";
 
 const InvoiceItem = ({
   id,
@@ -33,12 +34,8 @@ const InvoiceItem = ({
         <div className={styles.invoice__rightContent}>
           <div className={styles.rightContentWrapper}>
             <p className={styles.invoice__total}>{getFormattedTotal(total)}</p>
-            <div
-              className={`${styles.invoice__status} ${
-                styles[getStatusClassName(status)]
-              }`}
-            >
-              <p>{status}</p>
+            <div className={styles.invoice__status}>
+              <Status status={status} />
             </div>
           </div>
 

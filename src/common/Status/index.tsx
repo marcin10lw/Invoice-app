@@ -9,20 +9,16 @@ const Status = ({ status }: StatusProps) => {
   const getStatusClassName = (status: InvoiceStatus) => {
     switch (status) {
       case "pending":
-        return "invoice__status--pending";
+        return "status--pending";
       case "draft":
-        return "invoice__status--draft";
+        return "status--draft";
       case "paid":
-        return "invoice__status--paid";
+        return "status--paid";
     }
   };
 
   return (
-    <div
-      className={`${styles.invoice__status} ${
-        styles[getStatusClassName(status)]
-      }`}
-    >
+    <div className={`${styles.status} ${styles[getStatusClassName(status)]}`}>
       <p>{status}</p>
     </div>
   );
