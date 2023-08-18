@@ -1,3 +1,9 @@
+@use "../../../../../sass/style.scss" as *;
+
 .skeletonWrapper {
   height: 72px;
+
+  @include breakpoint(mobile) {
+    height: 134px;
+  }
 }
