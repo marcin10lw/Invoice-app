@@ -17,11 +17,13 @@ const Form = () => {
           isFormOpen ? styles["formWrapper--open"] : ""
         }`}
       >
-        <h3>New Invoice</h3>
+        <div className={styles.wapper}>
+          <h3>New Invoice</h3>
 
-        <form>
-          <BillFrom />
-        </form>
+          <form>
+            <BillFrom />
+          </form>
+        </div>
       </div>
     </>
   );
