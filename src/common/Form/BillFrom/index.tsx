@@ -8,29 +8,29 @@ const BillFrom = () => {
 
         <div>
           <div className="inputGroup">
-            <label htmlFor="street" className="label">
+            <label htmlFor="fromStreet" className="label">
               Street Address
             </label>
-            <input id="street" name="street" className="input" />
+            <input id="fromStreet" name="fromStreet" className="input" />
           </div>
           <div className={styles.inputsWrapper}>
             <div className="inputGroup">
-              <label htmlFor="city" className="label">
+              <label htmlFor="fromCity" className="label">
                 City
               </label>
-              <input id="city" name="city" className="input" />
+              <input id="fromCity" name="fromCity" className="input" />
             </div>
             <div className="inputGroup">
-              <label htmlFor="postCode" className="label">
+              <label htmlFor="fromPostCode" className="label">
                 Post Code
               </label>
-              <input id="postCode" name="postCode" className="input" />
+              <input id="fromPostCode" name="fromPostCode" className="input" />
             </div>
             <div className="inputGroup">
-              <label htmlFor="coutry" className="label">
+              <label htmlFor="fromCoutry" className="label">
                 Country
               </label>
-              <input id="country" name="country" className="input" />
+              <input id="fromCountry" name="fromCountry" className="input" />
             </div>
           </div>
         </div>

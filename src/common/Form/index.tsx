@@ -2,6 +2,7 @@ import { useContext } from "react";
 
 import { FormContext } from "context/FormContext";
 import BillFrom from "./BillFrom";
+import BillTo from "./BillTo";
 import styles from "./index.module.scss";
 
 const Form = () => {
@@ -25,6 +26,7 @@ const Form = () => {
 
           <form>
             <BillFrom />
+            <BillTo />
           </form>
         </div>
       </div>
