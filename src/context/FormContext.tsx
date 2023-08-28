@@ -8,7 +8,7 @@ type FormContextState = {
 export const FormContext = createContext({} as FormContextState);
 
 const FormProvider = ({ children }: PropsWithChildren) => {
-  const [isFormOpen, setIsFormOpen] = useState(true);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
     <FormContext.Provider value={{ isFormOpen, setIsFormOpen }}>
