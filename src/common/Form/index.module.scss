@@ -2,14 +2,14 @@
 
 .formWrapper {
   position: fixed;
-  left: 100%;
+  left: -100%;
   z-index: 99;
   max-width: 720px;
   width: 100%;
   height: 100vh;
   background-color: var(--formBackground);
   border-radius: 0px 20px 20px 0px;
-  transition: left 200ms ease-in-out;
+  transition: left 600ms ease-in-out;
 }
 
 .formWrapper--open {
@@ -23,7 +23,7 @@
   background: #000000;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+  transition: opacity 600ms ease-in-out, visibility 600ms ease-in-out;
 }
 
 .backdrop--open {
@@ -33,4 +33,13 @@
 
 .wapper {
   padding: 60px 33px 0 160px;
+}
+
+.form__heading {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -0.5px;
+  color: var(--mainTextColor);
+  margin: 0 0 46px;
 }
