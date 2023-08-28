@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext } from "react";
+
+import { FormContext } from "context/FormContext";
 import BillFrom from "./BillFrom";
 import styles from "./index.module.scss";
 
 const Form = () => {
-  const [isFormOpen, setIsFormOpen] = useState(true);
+  const { isFormOpen } = useContext(FormContext);
 
   return (
     <>
@@ -18,7 +20,7 @@ const Form = () => {
         }`}
       >
         <div className={styles.wapper}>
-          <h3>New Invoice</h3>
+          <h3 className={styles.form__heading}>New Invoice</h3>
 
           <form>
             <BillFrom />

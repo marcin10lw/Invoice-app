@@ -4,18 +4,19 @@ import { HashRouter } from "react-router-dom";
 import { ApiProvider } from "@reduxjs/toolkit/query/react";
 import { apiSlice } from "store/api/apiSlice";
 
+import ContextProviders from "context/ContextProviders";
 import App from "./App";
-import { ThemeProvider } from "./context/ThemeContext";
 import "./sass/globals/globalStyles.scss";
+import "./sass/components/components.scss";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <HashRouter>
-      <ThemeProvider>
+      <ContextProviders>
         <ApiProvider api={apiSlice}>
           <App />
         </ApiProvider>
-      </ThemeProvider>
+      </ContextProviders>
     </HashRouter>
   </React.StrictMode>
 );

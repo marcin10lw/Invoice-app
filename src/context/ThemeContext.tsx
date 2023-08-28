@@ -12,7 +12,7 @@ type ThemeContextState = {
 
 export const ThemeContext = createContext({} as ThemeContextState);
 
-export const ThemeProvider = ({ children }: PropsWithChildren) => {
+const ThemeProvider = ({ children }: PropsWithChildren) => {
   const prefersColorScheme = usePrefersColorScheme();
   const [theme, setTheme] = useState<Theme>(
     getInitialState(`${prefersColorScheme}`)
@@ -32,3 +32,5 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
     </ThemeContext.Provider>
   );
 };
+
+export default ThemeProvider;
