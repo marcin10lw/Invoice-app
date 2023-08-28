@@ -5,7 +5,7 @@ import BillFrom from "./BillFrom";
 import styles from "./index.module.scss";
 
 const Form = () => {
-  const { isFormOpen } = useContext(FormContext);
+  const { isFormOpen, setIsFormOpen } = useContext(FormContext);
 
   return (
     <>
@@ -13,6 +13,7 @@ const Form = () => {
         className={`${styles.backdrop} ${
           isFormOpen ? styles["backdrop--open"] : ""
         }`}
+        onClick={() => setIsFormOpen(false)}
       />
       <div
         className={`${styles.formWrapper} ${
