@@ -33,8 +33,6 @@ const InvoicesPage = () => {
     });
   };
 
-  console.log(invoices);
-
   return (
     <Container>
       <main className={styles.main}>
