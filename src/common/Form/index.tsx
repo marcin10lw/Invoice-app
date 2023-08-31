@@ -31,7 +31,6 @@ const Form = () => {
             <div className={styles.form__fieldsets}>
               <BillFrom />
               <BillTo />
-              <BillTo />
               <Details />
             </div>
           </form>
