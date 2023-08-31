@@ -12,17 +12,3 @@
     padding-inline: 24px;
   }
 }
-
-.goBack {
-  @include textBold();
-
-  &:hover {
-    color: $shipCove;
-  }
-
-  &::before {
-    content: url("../../assets/icon-arrow-left.svg");
-    display: inline-block;
-    margin: 0 24px 0 0;
-  }
-}

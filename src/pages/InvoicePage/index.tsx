@@ -1,17 +1,18 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Container from "common/Container";
 import styles from "./index.module.scss";
 import Menu from "./Menu";
+import GoBack from "common/GoBack";
 
 const InvoicePage = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <main className={styles.main}>
         <nav>
-          <Link to="/invoices" className={styles.goBack}>
-            Go back
-          </Link>
+          <GoBack onClick={() => navigate(-1)} />
         </nav>
         <Menu />
       </main>
