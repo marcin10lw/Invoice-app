@@ -1,23 +1,22 @@
 import { useState, ChangeEvent } from "react";
+import { useQuery } from "@tanstack/react-query";
 
-import { useGetInvoicesQuery } from "store/api/apiSlice";
 import { StatusTag } from "types";
 import { filterInvoices } from "./filterInvoices";
+import { getInvoices } from "./getInvoices";
 import Container from "common/Container";
 import InvoicesHeader from "./components/InvoicesHeader";
 import InvoiceItem from "./components/IncoiveItem";
-import PlaceholderItem from "./components/PlaceholderItem";
 import EmptyView from "./components/EmptyView";
 import styles from "./index.module.scss";
 import Error from "common/Error";
 
 const InvoicesPage = () => {
-  const {
-    data: invoices = [],
-    isLoading,
-    isSuccess,
-    isError,
-  } = useGetInvoicesQuery(undefined);
+  const { data: invoices, status } = useQuery({
+    queryFn: getInvoices,
+    queryKey: ["invoices"],
+  });
+
   const [statusTag, setStautsTag] = useState<StatusTag>("total");
 
   const filteredInvoices = filterInvoices(invoices, statusTag);
@@ -34,8 +33,6 @@ const InvoicesPage = () => {
     });
   };
 
-  const placeholderArray = Array.from({ length: 7 }, (_, index) => index + 1);
-
   console.log(invoices);
 
   return (
@@ -44,9 +41,9 @@ const InvoicesPage = () => {
         <InvoicesHeader
           setTag={setTag}
           statusTag={statusTag}
-          filteredInvoicesAmount={filteredInvoices.length}
+          filteredInvoicesAmount={filteredInvoices?.length}
         />
-        {isSuccess &&
+        {status === "success" &&
           (!!invoices.length ? (
             <ul className={styles.invoicesList}>
               {filteredInvoices?.map(
@@ -66,14 +63,8 @@ const InvoicesPage = () => {
           ) : (
             <EmptyView />
           ))}
-        {isLoading && (
-          <ul className={styles.invoicesList}>
-            {placeholderArray.map((item) => (
-              <PlaceholderItem key={item} />
-            ))}
-          </ul>
-        )}
-        {isError && <Error />}
+
+        {status === "error" && <Error />}
       </main>
     </Container>
   );
