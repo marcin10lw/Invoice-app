@@ -5,6 +5,7 @@ import BillFrom from "./BillFrom";
 import BillTo from "./BillTo";
 import styles from "./index.module.scss";
 import Details from "./Details";
+import GoBack from "common/GoBack";
 
 const Form = () => {
   const { isFormOpen, setIsFormOpen } = useContext(FormContext);
@@ -18,20 +19,25 @@ const Form = () => {
         onClick={() => setIsFormOpen(false)}
       />
       <div
-        className={`${styles.formWrapper} ${
-          isFormOpen ? styles["formWrapper--open"] : ""
-        }`}
+        className={`${styles.menu} ${isFormOpen ? styles["menu--open"] : ""}`}
       >
-        <div className={styles.wapper}>
+        <div className={styles.goBackWrapper}>
+          <GoBack onClick={() => setIsFormOpen(false)} />
+        </div>
+        <div className={styles.formWrapper}>
           <h3 className={styles.form__heading}>New Invoice</h3>
 
-          <form>
-            <BillFrom />
-            <BillTo />
-            <BillTo />
-            <Details />
+          <form className={styles.form}>
+            <div className={styles.form__fieldsets}>
+              <BillFrom />
+              <BillTo />
+              <BillTo />
+              <Details />
+            </div>
           </form>
         </div>
+
+        <div className={styles.buttons}></div>
       </div>
     </>
   );

@@ -1,18 +1,31 @@
 @use "../../sass/style.scss" as *;
 
-.formWrapper {
+.menu {
   position: fixed;
   left: -100%;
+  top: 0;
+  bottom: 0;
   z-index: 99;
   max-width: 720px;
   width: 100%;
-  height: 100vh;
+  padding: 0 32px 0 160px;
   background-color: var(--formBackground);
   border-radius: 0px 20px 20px 0px;
   transition: left 450ms ease-in-out;
+
+  @include breakpoint(tablet) {
+    top: 80px;
+    padding: 0 32px 0 56px;
+  }
+
+  @include breakpoint(mobile) {
+    top: 72px;
+    max-width: 100%;
+    padding: 32px 12px 0 24px;
+  }
 }
 
-.formWrapper--open {
+.menu--open {
   left: 0;
 }
 
@@ -31,8 +44,49 @@
   opacity: 0.5;
 }
 
-.wapper {
-  padding: 60px 33px 0 160px;
+.goBackWrapper {
+  display: none;
+
+  @include breakpoint(mobile) {
+    display: block;
+  }
+}
+
+.formWrapper {
+  height: 100%;
+  padding: 60px 0 150px;
+
+  @include breakpoint(mobile) {
+    padding: 26px 0 160px;
+  }
+}
+
+.form {
+  height: 100%;
+  padding: 60px 0 0;
+
+  @include breakpoint(tablet) {
+    padding: 46px 0 0;
+  }
+}
+
+.form__fieldsets {
+  height: 100%;
+  padding: 0 16px 0 0;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--inputBorder);
+    border-radius: 4px;
+  }
+
+  @include breakpoint(mobile) {
+    padding: 0 12px 0 0;
+  }
 }
 
 .form__heading {
@@ -41,5 +95,14 @@
   line-height: 32px;
   letter-spacing: -0.5px;
   color: var(--mainTextColor);
-  margin: 0 0 46px;
+}
+
+.buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 110px;
+  border-radius: 0px 20px 20px 0px;
+  background-color: var(--formBackground_2);
 }
