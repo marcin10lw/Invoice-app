@@ -18,10 +18,13 @@ const InvoicesHeader = ({
     <header className={styles.header}>
       <div>
         <h1 className={styles.header__heading}>Invoices</h1>
-        <p className={styles.header__info}>
-          <span>There are</span> {filteredInvoicesAmount}{" "}
-          <span>{statusTag}</span> invoices
-        </p>
+        {filteredInvoicesAmount && (
+          <p className={styles.header__info}>
+            <span>There are</span> {filteredInvoicesAmount}{" "}
+            <span>{statusTag}</span>{" "}
+            {filteredInvoicesAmount === 1 ? "invoice" : "invoices"}
+          </p>
+        )}
       </div>
       <div className={styles.header__dynamic}>
         <FilterInvoices setTag={setTag} statusTag={statusTag} />

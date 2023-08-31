@@ -4,6 +4,7 @@ import { FormContext } from "context/FormContext";
 import BillFrom from "./BillFrom";
 import BillTo from "./BillTo";
 import styles from "./index.module.scss";
+import Details from "./Details";
 
 const Form = () => {
   const { isFormOpen, setIsFormOpen } = useContext(FormContext);
@@ -27,6 +28,8 @@ const Form = () => {
           <form>
             <BillFrom />
             <BillTo />
+            <BillTo />
+            <Details />
           </form>
         </div>
       </div>
