@@ -37,7 +37,26 @@ const Form = () => {
           </form>
         </div>
 
-        <div className={styles.buttons}></div>
+        <div className={styles.buttonsWrapper}>
+          <div className={styles.buttons}>
+            <button className={`${styles.button} ${styles["button--discard"]}`}>
+              Discard
+            </button>
+
+            <div className={styles.rightButtons}>
+              <button
+                className={`${styles.button} ${styles["button--saveDraft"]}`}
+              >
+                Save as Draft
+              </button>
+              <button
+                className={`${styles.button} ${styles["button--saveSend"]}`}
+              >
+                Save & Send
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

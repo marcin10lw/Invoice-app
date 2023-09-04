@@ -98,7 +98,7 @@
   color: var(--mainTextColor);
 }
 
-.buttons {
+.buttonsWrapper {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -106,8 +106,56 @@
   height: 110px;
   border-radius: 0px 20px 20px 0px;
   background-color: var(--formBackground_2);
+  padding: 0 56px 0 160px;
+  display: flex;
+  align-items: center;
+
+  @include breakpoint(tablet) {
+    padding: 0 56px;
+  }
 
   @include breakpoint(mobile) {
     border-radius: 0px;
+    padding: 0 32px 0 24px;
   }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  width: 100%;
+}
+
+.rightButtons {
+  display: flex;
+  gap: 7px;
+}
+
+.button {
+  @include baseButton();
+
+  @include breakpoint(mobile) {
+    padding-inline: 14px;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.button--discard {
+  background-color: $selago_2;
+  color: $shipCove;
+}
+
+.button--saveDraft {
+  background-color: $oxfordBlue;
+  color: var(--infoTextColor_1);
+}
+
+.button--saveSend {
+  background-color: $cornflowerBlue;
+  color: $white;
 }
