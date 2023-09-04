@@ -13,9 +13,7 @@ export const generateDate = (
     arrayOfDate.push({
       date: firstDateOfMonth.date(i),
       currentMonth: true,
-      today:
-        firstDateOfMonth.date(i).toDate().toDateString() ===
-        dayjs().toDate().toDateString(),
+      passed: firstDateOfMonth.date(i).isBefore(dayjs(), "day"),
     });
   }
 
@@ -29,9 +27,7 @@ export const generateDate = (
     arrayOfDate.push({
       date: lastDateOfMonth.date(i),
       currentMonth: false,
-      // today:
-      //   firstDateOfMonth.date(i).toDate().toDateString() ===
-      //   dayjs().toDate().toDateString(),
+      passed: lastDateOfMonth.date(i).isBefore(dayjs(), "day"),
     });
   }
 
