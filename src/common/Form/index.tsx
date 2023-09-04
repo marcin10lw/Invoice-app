@@ -32,6 +32,7 @@ const Form = () => {
               <BillFrom />
               <BillTo />
               <Details />
+              <BillTo />
             </div>
           </form>
         </div>

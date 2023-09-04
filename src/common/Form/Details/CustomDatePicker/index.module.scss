@@ -33,11 +33,31 @@
   padding: 26px 24px 30px;
 }
 
+.popper__changeMonth {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:disabled {
+      pointer-events: none;
+      opacity: 0.4;
+    }
+  }
+}
+
 .popper__dateBoard {
   display: grid;
   grid-template-columns: repeat(7, auto);
   justify-content: space-between;
   row-gap: 16px;
+  margin: 32px 0 0;
 }
 
 .popper__chooseDate {
