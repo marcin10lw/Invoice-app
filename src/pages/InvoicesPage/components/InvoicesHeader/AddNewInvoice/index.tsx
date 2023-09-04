@@ -4,10 +4,15 @@ import { useContext } from "react";
 import { FormContext } from "context/FormContext";
 
 const AddNewInvoice = () => {
-  const { setIsFormOpen } = useContext(FormContext);
+  const { setIsFormOpen, setFormType } = useContext(FormContext);
+
+  const onButtonClick = () => {
+    setIsFormOpen(true);
+    setFormType("create");
+  };
 
   return (
-    <button className={styles.button} onClick={() => setIsFormOpen(true)}>
+    <button className={styles.button} onClick={onButtonClick}>
       <div className={styles.button__plus}>
         <Plus />
       </div>
