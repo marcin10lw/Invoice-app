@@ -2,7 +2,7 @@ import { useState } from "react";
 import dayjs from "dayjs";
 
 import { getFormattedDate } from "utils/getFormattedDate";
-import { generateDate } from "utils/calender";
+import { generateDate } from "common/Form/Details/CustomDatePicker/generateDate";
 import { ReactComponent as CalenderIcon } from "assets/icon-calendar.svg";
 import styles from "./index.module.scss";
 
@@ -36,6 +36,10 @@ const CustomDatePicker = () => {
 
         {isPopperOpen && (
           <div className={styles.popper} onClick={(e) => e.stopPropagation()}>
+            <div>
+
+            </div>
+
             <div className={styles.popper__dateBoard}>
               {generateDate().map(({ date, currentMonth, passed }) => {
                 const isSelectedDate =
