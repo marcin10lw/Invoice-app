@@ -1,5 +1,16 @@
+@use "../../../sass/style.scss" as *;
+
 .inputsWrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin: 25px 0 0;
+
+  @include breakpoint(mobile) {
+    grid-template-columns: repeat(2, 1fr);
+
+    & > div:last-child {
+      grid-column: span 2;
+    }
+  }
 }

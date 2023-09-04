@@ -26,7 +26,7 @@ const BillTo = () => {
           </label>
           <input id="toAddress" className="input" />
         </div>
-        <div className={styles.wrapper}>
+        <div className={styles.inputsWrapper}>
           <div className="inputGroup">
             <label htmlFor="toCity" className="label">
               City

@@ -1,3 +1,5 @@
+@use "../../../sass/style.scss" as *;
+
 .billTo {
   margin: 49px 0 0;
 }
@@ -8,7 +10,16 @@
   gap: 25px;
 }
 
-.wrapper {
-  display: flex;
+.inputsWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+
+  @include breakpoint(mobile) {
+    grid-template-columns: repeat(2, 1fr);
+
+    & > div:last-child {
+      grid-column: span 2;
+    }
+  }
 }
