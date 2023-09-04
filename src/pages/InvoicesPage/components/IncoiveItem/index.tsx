@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { getFormattedPaymentDue } from "utils/getFormattedPaymentDue";
+import { getFormattedDate } from "utils/getFormattedDate";
 import { InvoiceStatus } from "types";
 import { getFormattedAmount } from "utils/getFormattedAmount";
 import { ReactComponent as Arrow } from "assets/icon-arrow-right.svg";
@@ -32,7 +32,7 @@ const InvoiceItem = ({
               {id}
             </h2>
             <p className={styles.invoice__paymentDue}>
-              Due {getFormattedPaymentDue(paymentDue)}
+              Due {getFormattedDate(paymentDue)}
             </p>
           </div>
           <p className={styles.invoice__clientName}>{clientName}</p>
