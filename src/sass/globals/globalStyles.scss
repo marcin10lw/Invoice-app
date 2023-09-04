@@ -1,5 +1,6 @@
 @use "../globals/theme.scss" as *;
 @use "../utils/breakpoints.scss" as *;
+@use "../globals/colors.scss" as *;
 
 html {
   box-sizing: border-box;
@@ -13,6 +14,16 @@ html {
 
 body {
   font-family: "League Spartan", sans-serif;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: $mirage_2;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $mirage;
+    border-radius: 4px;
+  }
 }
 
 .rootContainer {
