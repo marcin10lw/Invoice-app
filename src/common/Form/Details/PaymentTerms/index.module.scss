@@ -1,0 +1,48 @@
+@use "../../../../sass/style.scss" as *;
+
+.termPicker {
+  @extend .input;
+  position: relative;
+  cursor: default;
+}
+
+.termPicker--open {
+  border: 1px solid var(--inputFocus);
+}
+
+.termPicker__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.termPicker__arrow--open {
+  transform: rotate(180deg);
+}
+
+.popper {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 8px);
+  width: 240px;
+  background-color: var(--mainBackground_3);
+  border-radius: 8px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.popper__button {
+  &:not(:last-child) button {
+    border-bottom: 1px solid var(--checkboxBackground);
+  }
+
+  button {
+    text-align: start;
+    width: 100%;
+    padding: 16px 24px;
+    color: var(--infoTextColor_5);
+
+    &:hover {
+      color: $heliotrope;
+    }
+  }
+}

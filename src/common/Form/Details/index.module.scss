@@ -1,3 +1,9 @@
 .fieldset {
   margin: 49px 0 0;
 }
+
+.dateFields {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
