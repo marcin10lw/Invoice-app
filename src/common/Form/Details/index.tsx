@@ -1,10 +1,10 @@
-import CustomDatePicker from "./CustomDatePicker";
+import DatePicker from "./DatePicker";
 import styles from "./index.module.scss";
 
 const Details = () => {
   return (
     <fieldset className={styles.fieldset}>
-      <CustomDatePicker />
+      <DatePicker />
     </fieldset>
   );
 };
