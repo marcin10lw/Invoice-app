@@ -69,6 +69,10 @@ $themes: (
     darkTheme: $selago,
     lightTheme: $yonder,
   ),
+  infoTextColor_5: (
+    darkTheme: $selago,
+    lightTheme: $vulcan,
+  ),
 );
 
 @mixin styles($mode) {
