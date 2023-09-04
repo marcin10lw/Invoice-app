@@ -4,6 +4,7 @@
   @extend .input;
   max-width: 240px;
   position: relative;
+  cursor: default;
 
   svg {
     display: block;
@@ -45,6 +46,11 @@
   &:hover {
     color: $cornflowerBlue;
   }
+
+  &:disabled {
+    opacity: 0.1;
+    pointer-events: none;
+  }
 }
 
 .popper__chooseDate--selected {
@@ -52,5 +58,5 @@
 }
 
 .popper__chooseDate--nextMonth {
-  opacity: 0.2;
+  opacity: 0.25;
 }

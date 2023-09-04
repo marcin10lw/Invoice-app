@@ -1,10 +1,10 @@
 import { useState } from "react";
 import dayjs from "dayjs";
 
+import { getFormattedDate } from "utils/getFormattedDate";
 import { generateDate } from "utils/calender";
 import { ReactComponent as CalenderIcon } from "assets/icon-calendar.svg";
 import styles from "./index.module.scss";
-import { getFormattedDate } from "utils/getFormattedDate";
 
 const CustomDatePicker = () => {
   const [isPopperOpen, setIsPopperOpen] = useState(false);
@@ -13,14 +13,18 @@ const CustomDatePicker = () => {
 
   console.log(selectedDate);
 
+  const togglePopperOpen = () => {
+    setIsPopperOpen((isPopperOpen) => !isPopperOpen);
+  };
+
   return (
     <div className="inputGroup">
-      <div onClick={() => setIsPopperOpen(true)} className="label">
+      <div onClick={togglePopperOpen} className="label">
         Invoice Date
       </div>
 
       <button
-        onClick={() => setIsPopperOpen((isPopperOpen) => !isPopperOpen)}
+        onClick={togglePopperOpen}
         className={`${styles.datePicker} ${
           isPopperOpen ? styles["datePicker--open"] : ""
         }`}
@@ -31,9 +35,9 @@ const CustomDatePicker = () => {
         </div>
 
         {isPopperOpen && (
-          <div className={styles.popper}>
+          <div className={styles.popper} onClick={(e) => e.stopPropagation()}>
             <div className={styles.popper__dateBoard}>
-              {generateDate().map(({ date, currentMonth, today }) => {
+              {generateDate().map(({ date, currentMonth, passed }) => {
                 const isSelectedDate =
                   selectedDate.toDate().toDateString() ===
                   date.toDate().toDateString();
@@ -41,7 +45,11 @@ const CustomDatePicker = () => {
                 return (
                   <button
                     key={date.toDate().toDateString()}
-                    onClick={() => setSelectedDate(date)}
+                    onClick={() => {
+                      if (passed) return;
+                      setSelectedDate(date);
+                    }}
+                    disabled={passed}
                     className={`${styles.popper__chooseDate} ${
                       isSelectedDate
                         ? styles["popper__chooseDate--selected"]
