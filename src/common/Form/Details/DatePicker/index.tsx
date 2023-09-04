@@ -1,6 +1,7 @@
 import { useState } from "react";
 import dayjs from "dayjs";
 
+import useOutsideClick from "hooks/useOutsideClick";
 import { generateDate } from "common/Form/Details/DatePicker/generateDate";
 import { ReactComponent as CalenderIcon } from "assets/icon-calendar.svg";
 import { ReactComponent as LeftArrow } from "assets/icon-arrow-left.svg";
@@ -13,6 +14,8 @@ const DatePicker = () => {
   const [today, setToday] = useState(currentDate);
   const [selectedDate, setSelectedDate] = useState(currentDate);
 
+  const ref = useOutsideClick<HTMLDivElement>(() => setIsPopperOpen(false));
+
   const isPrevMonthDisabled = () => {
     const prevMonth = today.subtract(1, "month");
     return prevMonth.isBefore(currentDate, "month");
@@ -23,7 +26,7 @@ const DatePicker = () => {
   };
 
   return (
-    <div className="inputGroup">
+    <div ref={ref} className="inputGroup">
       <div onClick={togglePopperOpen} className="label">
         Invoice Date
       </div>

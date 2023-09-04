@@ -3,16 +3,18 @@ import { useState } from "react";
 import { termsData } from "./termsData";
 import { ReactComponent as ArrowDown } from "assets/icon-arrow-down.svg";
 import styles from "./index.module.scss";
+import useOutsideClick from "hooks/useOutsideClick";
 
 const PaymentTerms = () => {
   const [isPopperOpen, setIsPopperOpen] = useState(false);
+  const ref = useOutsideClick<HTMLDivElement>(() => setIsPopperOpen(false));
 
   const togglePopperOpen = () => {
     setIsPopperOpen((isPopperOpen) => !isPopperOpen);
   };
 
   return (
-    <div className="inputGroup">
+    <div ref={ref} className="inputGroup">
       <div onClick={togglePopperOpen} className="label">
         Payment Terms
       </div>
