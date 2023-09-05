@@ -6,6 +6,7 @@ import BillTo from "./BillTo";
 import styles from "./index.module.scss";
 import Details from "./Details";
 import GoBack from "common/GoBack";
+import Items from "./Items";
 
 const Form = () => {
   const { isFormOpen, setIsFormOpen } = useContext(FormContext);
@@ -32,7 +33,7 @@ const Form = () => {
               <BillFrom />
               <BillTo />
               <Details />
-              <BillTo />
+              <Items />
             </div>
           </form>
 

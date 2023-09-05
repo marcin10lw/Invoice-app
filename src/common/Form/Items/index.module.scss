@@ -1,0 +1,27 @@
+@use "../../../sass/style.scss" as *;
+
+.items {
+  margin: 36px 0 0;
+}
+
+.items__heading {
+  color: $waterloo;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -0.375px;
+}
+
+.items__content {
+  margin: 14px 0 0;
+}
+
+.items__head {
+  display: grid;
+  grid-template-columns: minmax(0, 214px) 46px 100px 56px;
+  gap: 16px;
+
+  span {
+    @extend .label;
+  }
+}
