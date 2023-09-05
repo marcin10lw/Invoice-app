@@ -9,6 +9,13 @@ const Details = () => {
         <DatePicker />
         <PaymentTerms />
       </div>
+
+      <div className="inputGroup">
+        <label htmlFor="description" className="label">
+          Project Description
+        </label>
+        <input id="description" name="description" className="input" />
+      </div>
     </fieldset>
   );
 };
