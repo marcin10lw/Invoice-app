@@ -1,6 +1,9 @@
 @use "../../../sass/style.scss" as *;
 
 .fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
   margin: 49px 0 0;
 }
 

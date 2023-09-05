@@ -15,7 +15,11 @@ const PaymentTerms = () => {
 
   return (
     <div ref={ref} className="inputGroup">
-      <div onClick={togglePopperOpen} className="label">
+      <div
+        onClick={togglePopperOpen}
+        className="label"
+        aria-labelledby="open field to provide payment terms"
+      >
         Payment Terms
       </div>
 

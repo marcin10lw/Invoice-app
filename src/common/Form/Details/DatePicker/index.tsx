@@ -27,7 +27,11 @@ const DatePicker = () => {
 
   return (
     <div ref={ref} className="inputGroup">
-      <div onClick={togglePopperOpen} className="label">
+      <div
+        onClick={togglePopperOpen}
+        className="label"
+        aria-labelledby="open calender to provide invoice date"
+      >
         Invoice Date
       </div>
 
