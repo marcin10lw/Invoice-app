@@ -40,7 +40,7 @@ const Form = () => {
             <div className={styles.form__fieldsets}>
               <BillFrom register={register} />
               <BillTo register={register} />
-              <Details control={control} />
+              <Details control={control} register={register} />
               <Items />
             </div>
           </form>
