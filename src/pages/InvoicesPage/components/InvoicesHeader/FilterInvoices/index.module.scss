@@ -24,24 +24,16 @@
   z-index: 9;
   top: 100%;
   left: 50%;
-  opacity: 0;
+  transform: translateX(-50%);
   width: 192px;
   padding-top: 22px;
-  visibility: hidden;
-  transform-origin: top center;
-  transition: 280ms all 40ms ease-out;
-  transform: rotateX(-90deg) translateX(-50%);
-}
-
-.dropdown__menu--open {
-  opacity: 1;
-  visibility: visible;
-  transform: rotateX(0) translateX(-50%);
 }
 
 .dropdown__list {
+  background-color: var(--mainBackground_3);
+  box-shadow: 0px 10px 20px var(--formShadowColor);
+  border-radius: 8px;
   padding: 24px;
-  @include formField();
   display: flex;
   flex-direction: column;
   gap: 15px;
