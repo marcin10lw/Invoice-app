@@ -2,6 +2,10 @@
 
 .items {
   margin: 36px 0 0;
+
+  @include breakpoint(mobile) {
+    margin: 68px 0 0;
+  }
 }
 
 .items__heading {
@@ -14,14 +18,50 @@
 
 .items__content {
   margin: 14px 0 0;
+
+  @include breakpoint(mobile) {
+    margin: 22px 0 0;
+  }
 }
 
 .items__head {
   display: grid;
-  grid-template-columns: minmax(0, 214px) 46px 100px 56px;
+  grid-template-columns: 1fr 46px 100px minmax(50px, 95px);
   gap: 16px;
+
+  @include breakpoint(mobile) {
+    display: none;
+  }
 
   span {
     @extend .label;
+  }
+}
+
+.items__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 15px 0 0;
+
+  @include breakpoint(mobile) {
+    gap: 48px;
+  }
+}
+
+.items__button {
+  @include baseButton();
+  background-color: var(--editBackground);
+  color: $baliHai;
+  display: block;
+  width: 100%;
+  margin: 18px 0 0;
+
+  @include breakpoint(mobile) {
+    margin: 48px 0 0;
+  }
+
+  &:hover {
+    opacity: 0.8;
   }
 }

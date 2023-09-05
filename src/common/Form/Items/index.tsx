@@ -14,7 +14,14 @@ const Items = () => {
           <span>Total</span>
         </div>
 
-        {/* <Item /> */}
+        <ul className={styles.items__list}>
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+        </ul>
+
+        <button className={styles.items__button}>+ Add New Item</button>
       </div>
     </section>
   );
