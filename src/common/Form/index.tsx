@@ -28,7 +28,10 @@ const Form = () => {
         <div className={styles.wrapper}>
           <h3 className={styles.form__heading}>New Invoice</h3>
 
-          <form className={styles.form}>
+          <form
+            className={styles.form}
+            onSubmit={(event) => event.preventDefault()}
+          >
             <div className={styles.form__fieldsets}>
               <BillFrom />
               <BillTo />
