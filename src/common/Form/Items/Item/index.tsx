@@ -3,30 +3,36 @@ import styles from "./index.module.scss";
 
 const Item = () => {
   return (
-    <div className={styles.item}>
-      <div>
-        <label htmlFor="itemName">Item Name</label>
-        <input id="itemName" />
+    <li className={styles.item}>
+      <div className={`inputGroup ${styles["inputGroup--itemName"]}`}>
+        <label htmlFor="itemName" className={styles.label}>
+          Item Name
+        </label>
+        <input id="itemName" className={styles.input} />
       </div>
+      <div className={`inputGroup ${styles["inputGroup--quantity"]}`}>
+        <label htmlFor="quantity" className={styles.label}>
+          Qty.
+        </label>
+        <input id="quantity" className={styles.input} />
+      </div>
+      <div className={`inputGroup`}>
+        <label htmlFor="price" className={styles.label}>
+          Price
+        </label>
+        <input id="price" className={styles.input} />
+      </div>
+      <div className={styles.total}>
+        <div className={`inputGroup`}>
+          <div className={styles.label}>Total</div>
+          <span className={styles.total__text}>156.00</span>
+        </div>
 
-      <div>
-        <div>
-          <label htmlFor="quantity">Qty.</label>
-          <input id="quantity" />
-        </div>
-        <div>
-          <label htmlFor="price">Price</label>
-          <input id="price" />
-        </div>
-        <div>
-          <div>Total</div>
-          <span>156.00</span>
-        </div>
-        <button>
+        <button className={styles.total__button}>
           <DeleteIcon />
         </button>
       </div>
-    </div>
+    </li>
   );
 };
 

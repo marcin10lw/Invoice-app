@@ -1,5 +1,66 @@
+@use "../../../../sass/style.scss" as *;
+
 .item {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 46px 100px minmax(50px, 95px);
   align-items: center;
   gap: 16px;
+
+  @include breakpoint(mobile) {
+    grid-template-columns: 8fr 12fr 15fr;
+    gap: 25px 16px;
+  }
+}
+
+.label {
+  @extend .label;
+  display: none;
+
+  @include breakpoint(mobile) {
+    display: block;
+  }
+}
+
+.input {
+  @extend .input;
+}
+
+.inputGroup--quantity {
+  height: 100%;
+
+  input {
+    height: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+.inputGroup--itemName {
+  @include breakpoint(mobile) {
+    grid-column: span 3;
+  }
+}
+
+.total {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.total__text {
+  @include textBold();
+  color: var(--mainTextColor);
+}
+
+.total__button {
+  display: block;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  svg {
+    display: block;
+  }
 }
