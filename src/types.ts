@@ -1,4 +1,4 @@
-export type InvoiceStatus = "pending" | "paid" | "draft" | string;
+export type InvoiceStatus = "pending" | "paid" | "draft";
 
 type InvoiceAddress = {
   city: string;
