@@ -25,19 +25,23 @@
   width: 100%;
 }
 
-.popper__button {
+.popper__item {
   &:not(:last-child) button {
     border-bottom: 1px solid var(--checkboxBackground);
   }
+}
 
-  button {
-    text-align: start;
-    width: 100%;
-    padding: 16px 24px;
-    color: var(--infoTextColor_5);
+.popper__button {
+  text-align: start;
+  width: 100%;
+  padding: 16px 24px;
+  color: var(--infoTextColor_5);
 
-    &:hover {
-      color: $heliotrope;
-    }
+  &:hover {
+    color: $heliotrope;
   }
+}
+
+.popper__button--selected {
+  color: $heliotrope;
 }
