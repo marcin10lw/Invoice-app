@@ -1,4 +1,4 @@
-export type InvoiceStatus = "pending" | "paid" | "draft";
+export type InvoiceStatus = "pending" | "paid" | "draft" | string;
 
 type InvoiceAddress = {
   city: string;
@@ -19,7 +19,7 @@ export type Invoice = {
   paymentDue: string;
   clientName: string;
   total: number;
-  status: InvoiceStatus | string;
+  status: InvoiceStatus;
   description: string;
   senderAddress: InvoiceAddress;
   clientAddress: InvoiceAddress;
