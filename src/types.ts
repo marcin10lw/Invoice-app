@@ -16,11 +16,13 @@ type InvoiceItem = {
 
 export type Invoice = {
   id: string;
+  createdAt: string;
   paymentDue: string;
+  description: string;
+  paymentTerms: number;
   clientName: string;
   total: number;
   status: InvoiceStatus;
-  description: string;
   senderAddress: InvoiceAddress;
   clientAddress: InvoiceAddress;
   clientEmail: string;
