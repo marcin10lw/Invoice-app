@@ -3,6 +3,7 @@ import { useState } from "react";
 import { StatusTag } from "types";
 import { ReactComponent as Arrow } from "assets/icon-arrow-down.svg";
 import styles from "./index.module.scss";
+import useOutsideClick from "hooks/useOutsideClick";
 
 type FilterInvoicesProps = {
   setTag: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -11,9 +12,10 @@ type FilterInvoicesProps = {
 
 const FilterInvoices = ({ setTag, statusTag }: FilterInvoicesProps) => {
   const [showFilterMenu, setShowFilterMenu] = useState(false);
+  const ref = useOutsideClick<HTMLDivElement>(() => setShowFilterMenu(false));
 
   return (
-    <div className={styles.dropdown}>
+    <div ref={ref} className={styles.dropdown}>
       <button
         onClick={() => setShowFilterMenu((showFilterMenu) => !showFilterMenu)}
         className={styles.dropdown__button}
@@ -28,44 +30,42 @@ const FilterInvoices = ({ setTag, statusTag }: FilterInvoicesProps) => {
         />
       </button>
 
-      <div
-        className={`${styles.dropdown__menu} ${
-          showFilterMenu ? styles["dropdown__menu--open"] : ""
-        }`}
-      >
-        <ul className={styles.dropdown__list}>
-          <li className={styles.dropdown__inputGroup}>
-            <input
-              type="checkbox"
-              id="draft"
-              value="draft"
-              onChange={setTag}
-              checked={statusTag === "draft"}
-            />
-            <label htmlFor="draft">Draft</label>
-          </li>
-          <li className={styles.dropdown__inputGroup}>
-            <input
-              type="checkbox"
-              id="pending"
-              value="pending"
-              onChange={setTag}
-              checked={statusTag === "pending"}
-            />
-            <label htmlFor="pending">Pending</label>
-          </li>
-          <li className={styles.dropdown__inputGroup}>
-            <input
-              type="checkbox"
-              id="paid"
-              value="paid"
-              onChange={setTag}
-              checked={statusTag === "paid"}
-            />
-            <label htmlFor="paid">Paid</label>
-          </li>
-        </ul>
-      </div>
+      {showFilterMenu && (
+        <div className={`${styles.dropdown__menu}`}>
+          <ul className={styles.dropdown__list}>
+            <li className={styles.dropdown__inputGroup}>
+              <input
+                type="checkbox"
+                id="draft"
+                value="draft"
+                onChange={setTag}
+                checked={statusTag === "draft"}
+              />
+              <label htmlFor="draft">Draft</label>
+            </li>
+            <li className={styles.dropdown__inputGroup}>
+              <input
+                type="checkbox"
+                id="pending"
+                value="pending"
+                onChange={setTag}
+                checked={statusTag === "pending"}
+              />
+              <label htmlFor="pending">Pending</label>
+            </li>
+            <li className={styles.dropdown__inputGroup}>
+              <input
+                type="checkbox"
+                id="paid"
+                value="paid"
+                onChange={setTag}
+                checked={statusTag === "paid"}
+              />
+              <label htmlFor="paid">Paid</label>
+            </li>
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
