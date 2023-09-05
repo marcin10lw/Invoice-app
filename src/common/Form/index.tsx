@@ -1,5 +1,7 @@
 import { useContext } from "react";
+import { useForm } from "react-hook-form";
 
+import { defaultValues } from "./defaultValues";
 import { FormContext } from "context/FormContext";
 import BillFrom from "./BillFrom";
 import BillTo from "./BillTo";
@@ -10,6 +12,9 @@ import Items from "./Items";
 
 const Form = () => {
   const { isFormOpen, setIsFormOpen } = useContext(FormContext);
+  const { register, control, watch } = useForm({ defaultValues });
+
+  console.log(watch());
 
   return (
     <>
@@ -33,9 +38,9 @@ const Form = () => {
             onSubmit={(event) => event.preventDefault()}
           >
             <div className={styles.form__fieldsets}>
-              <BillFrom />
-              <BillTo />
-              <Details />
+              <BillFrom register={register} />
+              <BillTo register={register} />
+              <Details control={control} />
               <Items />
             </div>
           </form>

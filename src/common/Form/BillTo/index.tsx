@@ -1,6 +1,13 @@
+import { UseFormRegister } from "react-hook-form";
+
+import { Invoice } from "types";
 import styles from "./index.module.scss";
 
-const BillTo = () => {
+type BillToProps = {
+  register: UseFormRegister<Invoice>;
+};
+
+const BillTo = ({ register }: BillToProps) => {
   return (
     <fieldset className={styles.billTo}>
       <legend className="legend">Bill To</legend>
@@ -10,42 +17,58 @@ const BillTo = () => {
           <label htmlFor="toName" className="label">
             Client's Name
           </label>
-          <input id="toName" className="input" />
+          <input {...register("clientName")} id="toName" className="input" />
         </div>
 
         <div className="inputGroup">
           <label htmlFor="toEmail" className="label">
             Client's Email
           </label>
-          <input id="toEmail" className="input" />
+          <input {...register("clientEmail")} id="toEmail" className="input" />
         </div>
 
         <div className="inputGroup">
           <label htmlFor="toAddress" className="label">
-            Client's Address
+            Street Address
           </label>
-          <input id="toAddress" className="input" />
+          <input
+            {...register("clientAddress.street")}
+            id="toAddress"
+            className="input"
+          />
         </div>
         <div className={styles.inputsWrapper}>
           <div className="inputGroup">
             <label htmlFor="toCity" className="label">
               City
             </label>
-            <input id="toCity" className="input" />
+            <input
+              {...register("clientAddress.city")}
+              id="toCity"
+              className="input"
+            />
           </div>
 
           <div className="inputGroup">
             <label htmlFor="toPostCode" className="label">
               Post Code
             </label>
-            <input id="toPostCode" className="input" />
+            <input
+              {...register("clientAddress.postCode")}
+              id="toPostCode"
+              className="input"
+            />
           </div>
 
           <div className="inputGroup">
             <label htmlFor="toCountry" className="label">
               Country
             </label>
-            <input id="toCountry" className="input" />
+            <input
+              {...register("clientAddress.country")}
+              id="toCountry"
+              className="input"
+            />
           </div>
         </div>
       </div>

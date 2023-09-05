@@ -1,6 +1,13 @@
+import { UseFormRegister } from "react-hook-form";
+
+import { Invoice } from "types";
 import styles from "./index.module.scss";
 
-const BillFrom = () => {
+type BillFromProps = {
+  register: UseFormRegister<Invoice>;
+};
+
+const BillFrom = ({ register }: BillFromProps) => {
   return (
     <div>
       <fieldset className={styles.fieldset}>
@@ -11,26 +18,42 @@ const BillFrom = () => {
             <label htmlFor="fromStreet" className="label">
               Street Address
             </label>
-            <input id="fromStreet" name="fromStreet" className="input" />
+            <input
+              {...register("senderAddress.street")}
+              id="fromStreet"
+              className="input"
+            />
           </div>
           <div className={styles.inputsWrapper}>
             <div className="inputGroup">
               <label htmlFor="fromCity" className="label">
                 City
               </label>
-              <input id="fromCity" name="fromCity" className="input" />
+              <input
+                {...register("senderAddress.city")}
+                id="fromCity"
+                className="input"
+              />
             </div>
             <div className="inputGroup">
               <label htmlFor="fromPostCode" className="label">
                 Post Code
               </label>
-              <input id="fromPostCode" name="fromPostCode" className="input" />
+              <input
+                {...register("senderAddress.postCode")}
+                id="fromPostCode"
+                className="input"
+              />
             </div>
             <div className="inputGroup">
               <label htmlFor="fromCoutry" className="label">
                 Country
               </label>
-              <input id="fromCountry" name="fromCountry" className="input" />
+              <input
+                {...register("senderAddress.country")}
+                id="fromCountry"
+                className="input"
+              />
             </div>
           </div>
         </div>
