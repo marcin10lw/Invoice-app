@@ -14,12 +14,14 @@ export type InvoiceItem = {
   total: number;
 };
 
+type PaymentTerms = 1 | 7 | 14 | 30;
+
 export type Invoice = {
   id: string;
   createdAt: string;
   paymentDue: string;
   description: string;
-  paymentTerms: number;
+  paymentTerms: PaymentTerms;
   clientName: string;
   total: number;
   status: InvoiceStatus;

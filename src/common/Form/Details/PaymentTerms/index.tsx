@@ -5,7 +5,15 @@ import { ReactComponent as ArrowDown } from "assets/icon-arrow-down.svg";
 import styles from "./index.module.scss";
 import useOutsideClick from "hooks/useOutsideClick";
 
-const PaymentTerms = () => {
+type PaymentTermsProps = {
+  selectedPaymentTerm: number;
+  setSelectedPaymentTerm: (...event: any[]) => void;
+};
+
+const PaymentTerms = ({
+  selectedPaymentTerm,
+  setSelectedPaymentTerm,
+}: PaymentTermsProps) => {
   const [isPopperOpen, setIsPopperOpen] = useState(false);
   const ref = useOutsideClick<HTMLDivElement>(() => setIsPopperOpen(false));
 
@@ -30,7 +38,13 @@ const PaymentTerms = () => {
         }`}
       >
         <div className={styles.termPicker__info}>
-          <div>Net 30 Days</div>
+          <div>
+            {
+              termsData.find(
+                (termsData) => termsData.amount === selectedPaymentTerm
+              )?.content
+            }
+          </div>
           <ArrowDown
             className={` ${
               isPopperOpen ? styles["termPicker__arrow--open"] : ""
@@ -46,8 +60,17 @@ const PaymentTerms = () => {
             <ul>
               {termsData.map(({ id, content, amount }) => {
                 return (
-                  <li key={id} className={styles.popper__button}>
-                    <button>{content}</button>
+                  <li key={id} className={styles.popper__item}>
+                    <button
+                      onClick={() => setSelectedPaymentTerm(amount)}
+                      className={`${styles.popper__button} ${
+                        amount === selectedPaymentTerm
+                          ? styles["popper__button--selected"]
+                          : ""
+                      }`}
+                    >
+                      {content}
+                    </button>
                   </li>
                 );
               })}

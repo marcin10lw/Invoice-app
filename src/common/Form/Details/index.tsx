@@ -24,7 +24,16 @@ const Details = ({ control, register }: DetailsProps) => {
             />
           )}
         />
-        <PaymentTerms />
+        <Controller
+          name="paymentTerms"
+          control={control}
+          render={({ field }) => (
+            <PaymentTerms
+              selectedPaymentTerm={field.value}
+              setSelectedPaymentTerm={field.onChange}
+            />
+          )}
+        />
       </div>
 
       <div className="inputGroup">
