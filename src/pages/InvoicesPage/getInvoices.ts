@@ -1,9 +1,10 @@
-import axios from "axios";
-
 import { Invoice } from "types";
+import invoicesData from "data.json";
 
 export const getInvoices = async (): Promise<Invoice[]> => {
-  const { data } = await axios.get("/data.json");
-
-  return data.invoices ?? [];
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(invoicesData.invoices);
+    }, 400);
+  });
 };

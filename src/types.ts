@@ -19,7 +19,7 @@ export type Invoice = {
   paymentDue: string;
   clientName: string;
   total: number;
-  status: InvoiceStatus;
+  status: InvoiceStatus | string;
   description: string;
   senderAddress: InvoiceAddress;
   clientAddress: InvoiceAddress;
