@@ -1,12 +1,29 @@
+import { Control, Controller } from "react-hook-form";
+import dayjs from "dayjs";
+
+import { Invoice } from "types";
 import DatePicker from "./DatePicker";
 import PaymentTerms from "./PaymentTerms";
 import styles from "./index.module.scss";
 
-const Details = () => {
+type DetailsProps = {
+  control: Control<Invoice, any>;
+};
+
+const Details = ({ control }: DetailsProps) => {
   return (
     <fieldset className={styles.fieldset}>
       <div className={styles.dateFields}>
-        <DatePicker />
+        <Controller
+          name="paymentDue"
+          control={control}
+          render={({ field }) => (
+            <DatePicker
+              selectedDate={field.value}
+              setSelectedDate={field.onChange}
+            />
+          )}
+        />
         <PaymentTerms />
       </div>
 

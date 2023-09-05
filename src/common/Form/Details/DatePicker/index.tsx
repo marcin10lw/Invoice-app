@@ -8,11 +8,15 @@ import { ReactComponent as LeftArrow } from "assets/icon-arrow-left.svg";
 import { ReactComponent as RightArrow } from "assets/icon-arrow-right.svg";
 import styles from "./index.module.scss";
 
-const DatePicker = () => {
+type DatePickerProps = {
+  selectedDate: string;
+  setSelectedDate: (...event: any[]) => void;
+};
+
+const DatePicker = ({ selectedDate, setSelectedDate }: DatePickerProps) => {
   const [isPopperOpen, setIsPopperOpen] = useState(false);
   const currentDate = dayjs();
   const [today, setToday] = useState(currentDate);
-  const [selectedDate, setSelectedDate] = useState(currentDate);
 
   const ref = useOutsideClick<HTMLDivElement>(() => setIsPopperOpen(false));
 
@@ -42,7 +46,7 @@ const DatePicker = () => {
         }`}
       >
         <div className={styles.datePicker__info}>
-          <span>{selectedDate.format("DD MMM YYYY")}</span>
+          <span>{dayjs(selectedDate).format("DD MMM YYYY")}</span>
           <CalenderIcon />
         </div>
 
@@ -71,7 +75,7 @@ const DatePicker = () => {
               {generateDate(today.month(), today.year()).map(
                 ({ date, currentMonth, passed }) => {
                   const isSelectedDate =
-                    selectedDate.toDate().toDateString() ===
+                    dayjs(selectedDate).toDate().toDateString() ===
                     date.toDate().toDateString();
 
                   return (
@@ -79,7 +83,7 @@ const DatePicker = () => {
                       key={date.toDate().toDateString()}
                       onClick={() => {
                         if (passed) return;
-                        setSelectedDate(date);
+                        setSelectedDate(date.format("YYYY-MM-DD"));
                       }}
                       disabled={passed}
                       className={`${styles.popper__chooseDate} ${
