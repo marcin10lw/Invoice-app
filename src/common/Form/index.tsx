@@ -12,7 +12,9 @@ import Items from "./Items";
 
 const Form = () => {
   const { isFormOpen, setIsFormOpen } = useContext(FormContext);
-  const { control, register, setValue } = useForm({ defaultValues });
+  const { control, register, setValue, watch } = useForm({ defaultValues });
+
+  console.log(watch());
 
   return (
     <>

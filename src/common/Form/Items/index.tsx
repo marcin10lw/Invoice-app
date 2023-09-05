@@ -17,7 +17,7 @@ type ItemsProps = {
 };
 
 const Items = ({ control, register, setValue }: ItemsProps) => {
-  const { fields, append } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     control: control,
     name: "items",
   });
@@ -51,6 +51,7 @@ const Items = ({ control, register, setValue }: ItemsProps) => {
               register={register}
               setValue={setValue}
               fields={fields}
+              remove={remove}
             />
           ))}
         </ul>

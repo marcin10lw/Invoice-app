@@ -1,5 +1,6 @@
 import {
   FieldArrayWithId,
+  UseFieldArrayRemove,
   UseFormRegister,
   UseFormSetValue,
 } from "react-hook-form";
@@ -13,9 +14,10 @@ type ItemProps = {
   fields: FieldArrayWithId<Invoice, "items", "id">[];
   register: UseFormRegister<Invoice>;
   setValue: UseFormSetValue<Invoice>;
+  remove: UseFieldArrayRemove;
 };
 
-const Item = ({ index, fields, register, setValue }: ItemProps) => {
+const Item = ({ index, fields, register, setValue, remove }: ItemProps) => {
   return (
     <li className={styles.item}>
       <div className={`inputGroup ${styles["inputGroup--itemName"]}`}>
@@ -63,7 +65,7 @@ const Item = ({ index, fields, register, setValue }: ItemProps) => {
           <span className={styles.total__text}>150.00</span>
         </div>
 
-        <button className={styles.total__button}>
+        <button onClick={() => remove(index)} className={styles.total__button}>
           <DeleteIcon />
         </button>
       </div>
