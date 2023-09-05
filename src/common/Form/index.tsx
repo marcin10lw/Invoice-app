@@ -12,9 +12,7 @@ import Items from "./Items";
 
 const Form = () => {
   const { isFormOpen, setIsFormOpen } = useContext(FormContext);
-  const { register, control, watch } = useForm({ defaultValues });
-
-  console.log(watch());
+  const { control, register, setValue } = useForm({ defaultValues });
 
   return (
     <>
@@ -41,7 +39,11 @@ const Form = () => {
               <BillFrom register={register} />
               <BillTo register={register} />
               <Details control={control} register={register} />
-              <Items />
+              <Items
+                control={control}
+                register={register}
+                setValue={setValue}
+              />
             </div>
           </form>
 

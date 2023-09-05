@@ -1,7 +1,36 @@
+import {
+  Control,
+  UseFormRegister,
+  UseFormSetValue,
+  UseFormWatch,
+  useFieldArray,
+} from "react-hook-form";
+
+import { Invoice } from "types";
 import Item from "./Item";
 import styles from "./index.module.scss";
 
-const Items = () => {
+type ItemsProps = {
+  control: Control<Invoice, any>;
+  register: UseFormRegister<Invoice>;
+  setValue: UseFormSetValue<Invoice>;
+};
+
+const Items = ({ control, register, setValue }: ItemsProps) => {
+  const { fields, append } = useFieldArray({
+    control: control,
+    name: "items",
+  });
+
+  const onAddItem = () => {
+    append({
+      name: "",
+      price: 0,
+      quantity: 0,
+      total: 0,
+    });
+  };
+
   return (
     <section className={styles.items}>
       <h4 className={styles.items__heading}>Item List</h4>
@@ -15,13 +44,20 @@ const Items = () => {
         </div>
 
         <ul className={styles.items__list}>
-          <Item />
-          <Item />
-          <Item />
-          <Item />
+          {fields.map(({ id }, index) => (
+            <Item
+              key={id}
+              index={index}
+              register={register}
+              setValue={setValue}
+              fields={fields}
+            />
+          ))}
         </ul>
 
-        <button className={styles.items__button}>+ Add New Item</button>
+        <button onClick={onAddItem} className={styles.items__button}>
+          + Add New Item
+        </button>
       </div>
     </section>
   );

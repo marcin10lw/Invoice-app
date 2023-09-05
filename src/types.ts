@@ -7,7 +7,7 @@ type InvoiceAddress = {
   street: string;
 };
 
-type InvoiceItem = {
+export type InvoiceItem = {
   name: string;
   price: number;
   quantity: number;
