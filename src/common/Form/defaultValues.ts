@@ -4,12 +4,12 @@ import { Invoice } from "types";
 
 export const defaultValues: Invoice = {
   id: "",
+  clientName: "",
+  clientEmail: "",
   createdAt: "",
   paymentDue: dayjs().format("YYYY-MM-DD"),
   description: "",
   paymentTerms: 1,
-  clientName: "",
-  clientEmail: "",
   status: "pending",
   senderAddress: {
     street: "",

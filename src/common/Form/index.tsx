@@ -1,20 +1,30 @@
 import { useContext } from "react";
 import { useForm, useWatch } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { defaultValues } from "./defaultValues";
 import { FormContext } from "context/FormContext";
+import { InvoiceItem } from "types";
+import { invoiceSchema } from "models/Invoice";
 import BillFrom from "./BillFrom";
 import BillTo from "./BillTo";
 import styles from "./index.module.scss";
 import Details from "./Details";
 import GoBack from "common/GoBack";
 import Items from "./Items";
-import { InvoiceItem } from "types";
 
 const Form = () => {
   const { isFormOpen, setIsFormOpen } = useContext(FormContext);
-  const { control, register, setValue, watch, handleSubmit } = useForm({
+  const {
+    control,
+    register,
+    setValue,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     defaultValues,
+    resolver: zodResolver(invoiceSchema),
   });
 
   const watchItems = useWatch({
@@ -32,8 +42,10 @@ const Form = () => {
       total: calculateTotal(item),
     }));
 
-    console.log(itemsWithTotal);
+    // console.log({ ...data, items: itemsWithTotal });
   };
+
+  console.log(errors);
 
   return (
     <>
