@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 
 import { defaultValues } from "./defaultValues";
 import { FormContext } from "context/FormContext";
@@ -9,12 +9,31 @@ import styles from "./index.module.scss";
 import Details from "./Details";
 import GoBack from "common/GoBack";
 import Items from "./Items";
+import { InvoiceItem } from "types";
 
 const Form = () => {
   const { isFormOpen, setIsFormOpen } = useContext(FormContext);
-  const { control, register, setValue, watch } = useForm({ defaultValues });
+  const { control, register, setValue, watch, handleSubmit } = useForm({
+    defaultValues,
+  });
 
-  console.log(watch());
+  const watchItems = useWatch({
+    control,
+    name: "items",
+  });
+
+  const calculateTotal = (item: InvoiceItem) => {
+    return item.price * item.quantity;
+  };
+
+  const onFormSubmit = (data: typeof defaultValues) => {
+    const itemsWithTotal = watchItems.map((item) => ({
+      ...item,
+      total: calculateTotal(item),
+    }));
+
+    console.log(itemsWithTotal);
+  };
 
   return (
     <>
@@ -41,11 +60,7 @@ const Form = () => {
               <BillFrom register={register} />
               <BillTo register={register} />
               <Details control={control} register={register} />
-              <Items
-                control={control}
-                register={register}
-                setValue={setValue}
-              />
+              <Items control={control} register={register} />
             </div>
           </form>
 
@@ -60,6 +75,7 @@ const Form = () => {
               <div className={styles.rightButtons}>
                 <button
                   className={`${styles.button} ${styles["button--saveDraft"]}`}
+                  onClick={handleSubmit(onFormSubmit)}
                 >
                   Save as Draft
                 </button>

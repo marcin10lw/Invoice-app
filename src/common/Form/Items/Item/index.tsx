@@ -1,23 +1,17 @@
-import {
-  FieldArrayWithId,
-  UseFieldArrayRemove,
-  UseFormRegister,
-  UseFormSetValue,
-} from "react-hook-form";
+import { UseFieldArrayRemove, UseFormRegister } from "react-hook-form";
 
-import { Invoice, InvoiceItem } from "types";
+import { Invoice } from "types";
 import { ReactComponent as DeleteIcon } from "assets/icon-delete.svg";
 import styles from "./index.module.scss";
 
 type ItemProps = {
   index: number;
-  fields: FieldArrayWithId<Invoice, "items", "id">[];
+  total: number;
   register: UseFormRegister<Invoice>;
-  setValue: UseFormSetValue<Invoice>;
   remove: UseFieldArrayRemove;
 };
 
-const Item = ({ index, fields, register, setValue, remove }: ItemProps) => {
+const Item = ({ index, total, register, remove }: ItemProps) => {
   return (
     <li className={styles.item}>
       <div className={`inputGroup ${styles["inputGroup--itemName"]}`}>
@@ -42,6 +36,7 @@ const Item = ({ index, fields, register, setValue, remove }: ItemProps) => {
           })}
           id="quantity"
           type="number"
+          min={0}
           className={styles.input}
         />
       </div>
@@ -51,7 +46,10 @@ const Item = ({ index, fields, register, setValue, remove }: ItemProps) => {
           Price
         </label>
         <input
-          {...register(`items.${index}.price`, { min: 0, valueAsNumber: true })}
+          {...register(`items.${index}.price`, {
+            min: 0,
+            valueAsNumber: true,
+          })}
           id="price"
           type="number"
           min={0}
@@ -62,7 +60,9 @@ const Item = ({ index, fields, register, setValue, remove }: ItemProps) => {
       <div className={styles.total}>
         <div className={`inputGroup`}>
           <div className={styles.label}>Total</div>
-          <span className={styles.total__text}>150.00</span>
+          <span className={styles.total__text}>
+            {total.toString() === "NaN" ? 0 : total.toString()}
+          </span>
         </div>
 
         <button onClick={() => remove(index)} className={styles.total__button}>

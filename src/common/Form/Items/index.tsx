@@ -1,9 +1,8 @@
 import {
   Control,
   UseFormRegister,
-  UseFormSetValue,
-  UseFormWatch,
   useFieldArray,
+  useWatch,
 } from "react-hook-form";
 
 import { Invoice } from "types";
@@ -13,12 +12,16 @@ import styles from "./index.module.scss";
 type ItemsProps = {
   control: Control<Invoice, any>;
   register: UseFormRegister<Invoice>;
-  setValue: UseFormSetValue<Invoice>;
 };
 
-const Items = ({ control, register, setValue }: ItemsProps) => {
+const Items = ({ control, register }: ItemsProps) => {
   const { fields, append, remove } = useFieldArray({
-    control: control,
+    control,
+    name: "items",
+  });
+
+  const watchTest = useWatch({
+    control,
     name: "items",
   });
 
@@ -44,16 +47,19 @@ const Items = ({ control, register, setValue }: ItemsProps) => {
         </div>
 
         <ul className={styles.items__list}>
-          {fields.map(({ id }, index) => (
-            <Item
-              key={id}
-              index={index}
-              register={register}
-              setValue={setValue}
-              fields={fields}
-              remove={remove}
-            />
-          ))}
+          {fields.map((item, index) => {
+            const total = watchTest[index]?.price * watchTest[index]?.quantity;
+
+            return (
+              <Item
+                key={item.id}
+                index={index}
+                register={register}
+                remove={remove}
+                total={total}
+              />
+            );
+          })}
         </ul>
 
         <button onClick={onAddItem} className={styles.items__button}>
