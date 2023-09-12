@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { calculateTotal } from "utils/calculateTotal";
 import { defaultValues } from "./defaultValues";
 import { FormContext } from "context/FormContext";
-import { InvoiceItem } from "types";
+import { Invoice } from "types";
 import { invoiceSchema } from "models/Invoice";
 import BillFrom from "./BillFrom";
 import BillTo from "./BillTo";
@@ -24,7 +25,7 @@ const Form = () => {
     formState: { errors },
   } = useForm({
     defaultValues,
-    resolver: zodResolver(invoiceSchema),
+    // resolver: zodResolver(invoiceSchema),
   });
 
   const watchItems = useWatch({
@@ -32,20 +33,20 @@ const Form = () => {
     name: "items",
   });
 
-  const calculateTotal = (item: InvoiceItem) => {
-    return item.price * item.quantity;
-  };
-
-  const onFormSubmit = (data: typeof defaultValues) => {
+  const onFormSubmit = (data: Invoice) => {
     const itemsWithTotal = watchItems.map((item) => ({
       ...item,
-      total: calculateTotal(item),
+      total: item.price * item.quantity,
     }));
 
-    // console.log({ ...data, items: itemsWithTotal });
-  };
+    const newFormData: Invoice = {
+      ...data,
+      items: itemsWithTotal,
+      total: calculateTotal(itemsWithTotal, "total"),
+    };
 
-  console.log(errors);
+    console.log(newFormData);
+  };
 
   return (
     <>
