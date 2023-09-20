@@ -53,10 +53,10 @@ const Form = () => {
             onSubmit={(event) => event.preventDefault()}
           >
             <div className={styles.form__fieldsets}>
-              <BillFrom register={register} />
-              <BillTo register={register} />
-              <Details control={control} register={register} />
-              <Items control={control} register={register} />
+              <BillFrom register={register} errors={errors} />
+              <BillTo register={register} errors={errors} />
+              <Details control={control} register={register} errors={errors} />
+              <Items control={control} register={register} errors={errors} />
             </div>
           </form>
 

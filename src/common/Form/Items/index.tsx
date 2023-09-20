@@ -1,5 +1,6 @@
 import {
   Control,
+  FieldErrors,
   UseFormRegister,
   useFieldArray,
   useWatch,
@@ -12,9 +13,10 @@ import styles from "./index.module.scss";
 type ItemsProps = {
   control: Control<Invoice, any>;
   register: UseFormRegister<Invoice>;
+  errors: FieldErrors<Invoice>;
 };
 
-const Items = ({ control, register }: ItemsProps) => {
+const Items = ({ control, register, errors }: ItemsProps) => {
   const { fields, append, remove } = useFieldArray({
     control,
     name: "items",
@@ -57,6 +59,7 @@ const Items = ({ control, register }: ItemsProps) => {
                 register={register}
                 remove={remove}
                 total={total}
+                errors={errors}
               />
             );
           })}

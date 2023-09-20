@@ -44,6 +44,15 @@
   }
 }
 
+.input--error {
+  border: 1px solid $burntSienna;
+
+  &:focus-visible {
+    outline: none;
+    border: 1px solid $burntSienna;
+  }
+}
+
 .MuiPickersLayout-root {
   background: #252945;
 }

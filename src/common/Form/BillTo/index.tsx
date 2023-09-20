@@ -1,13 +1,14 @@
-import { UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 
 import { Invoice } from "types";
 import styles from "./index.module.scss";
 
 type BillToProps = {
   register: UseFormRegister<Invoice>;
+  errors: FieldErrors<Invoice>;
 };
 
-const BillTo = ({ register }: BillToProps) => {
+const BillTo = ({ register, errors }: BillToProps) => {
   return (
     <fieldset className={styles.billTo}>
       <legend className="legend">Bill To</legend>
@@ -17,14 +18,22 @@ const BillTo = ({ register }: BillToProps) => {
           <label htmlFor="toName" className="label">
             Client's Name
           </label>
-          <input {...register("clientName")} id="toName" className="input" />
+          <input
+            {...register("clientName")}
+            id="toName"
+            className={`input ${errors.clientName ? "input--error" : ""}`}
+          />
         </div>
 
         <div className="inputGroup">
           <label htmlFor="toEmail" className="label">
             Client's Email
           </label>
-          <input {...register("clientEmail")} id="toEmail" className="input" />
+          <input
+            {...register("clientEmail")}
+            id="toEmail"
+            className={`input ${errors.clientEmail ? "input--error" : ""}`}
+          />
         </div>
 
         <div className="inputGroup">
@@ -34,7 +43,9 @@ const BillTo = ({ register }: BillToProps) => {
           <input
             {...register("clientAddress.street")}
             id="toAddress"
-            className="input"
+            className={`input ${
+              errors.clientAddress?.street ? "input--error" : ""
+            }`}
           />
         </div>
         <div className={styles.inputsWrapper}>
@@ -45,7 +56,9 @@ const BillTo = ({ register }: BillToProps) => {
             <input
               {...register("clientAddress.city")}
               id="toCity"
-              className="input"
+              className={`input ${
+                errors.clientAddress?.city ? "input--error" : ""
+              }`}
             />
           </div>
 
@@ -56,7 +69,9 @@ const BillTo = ({ register }: BillToProps) => {
             <input
               {...register("clientAddress.postCode")}
               id="toPostCode"
-              className="input"
+              className={`input ${
+                errors.clientAddress?.postCode ? "input--error" : ""
+              }`}
             />
           </div>
 
@@ -67,7 +82,9 @@ const BillTo = ({ register }: BillToProps) => {
             <input
               {...register("clientAddress.country")}
               id="toCountry"
-              className="input"
+              className={`input ${
+                errors.clientAddress?.country ? "input--error" : ""
+              }`}
             />
           </div>
         </div>

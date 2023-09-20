@@ -5,7 +5,7 @@ const status = ["paid", "pending", "draft"] as const;
 const addressSchema = z.object({
   street: z.string().trim().min(2),
   city: z.string().trim().min(2),
-  postCode: z.string().trim(),
+  postCode: z.string().trim().min(1),
   country: z.string().trim().min(2),
 });
 

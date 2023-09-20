@@ -1,4 +1,8 @@
-import { UseFieldArrayRemove, UseFormRegister } from "react-hook-form";
+import {
+  FieldErrors,
+  UseFieldArrayRemove,
+  UseFormRegister,
+} from "react-hook-form";
 
 import { Invoice } from "types";
 import { ReactComponent as DeleteIcon } from "assets/icon-delete.svg";
@@ -7,11 +11,14 @@ import styles from "./index.module.scss";
 type ItemProps = {
   index: number;
   total: number;
+  errors: FieldErrors<Invoice>;
   register: UseFormRegister<Invoice>;
   remove: UseFieldArrayRemove;
 };
 
-const Item = ({ index, total, register, remove }: ItemProps) => {
+const Item = ({ index, total, register, remove, errors }: ItemProps) => {
+  const itemsError = errors.items && errors.items[index];
+
   return (
     <li className={styles.item}>
       <div className={`inputGroup ${styles["inputGroup--itemName"]}`}>
@@ -21,7 +28,9 @@ const Item = ({ index, total, register, remove }: ItemProps) => {
         <input
           {...register(`items.${index}.name`)}
           id="itemName"
-          className={styles.input}
+          className={`${styles.input} ${
+            itemsError?.name ? "input--error" : ""
+          }`}
         />
       </div>
 
@@ -37,7 +46,9 @@ const Item = ({ index, total, register, remove }: ItemProps) => {
           id="quantity"
           type="number"
           min={0}
-          className={styles.input}
+          className={`${styles.input} ${
+            itemsError?.quantity ? "input--error" : ""
+          }`}
         />
       </div>
 
@@ -53,7 +64,9 @@ const Item = ({ index, total, register, remove }: ItemProps) => {
           id="price"
           type="number"
           min={0}
-          className={styles.input}
+          className={`${styles.input} ${
+            itemsError?.price ? "input--error" : ""
+          }`}
         />
       </div>
 

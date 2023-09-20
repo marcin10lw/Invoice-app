@@ -1,4 +1,9 @@
-import { Control, Controller, UseFormRegister } from "react-hook-form";
+import {
+  Control,
+  Controller,
+  FieldErrors,
+  UseFormRegister,
+} from "react-hook-form";
 
 import { Invoice } from "types";
 import DatePicker from "./DatePicker";
@@ -8,9 +13,10 @@ import styles from "./index.module.scss";
 type DetailsProps = {
   control: Control<Invoice, any>;
   register: UseFormRegister<Invoice>;
+  errors: FieldErrors<Invoice>;
 };
 
-const Details = ({ control, register }: DetailsProps) => {
+const Details = ({ control, register, errors }: DetailsProps) => {
   return (
     <fieldset className={styles.fieldset}>
       <div className={styles.dateFields}>
@@ -43,7 +49,7 @@ const Details = ({ control, register }: DetailsProps) => {
         <input
           {...register("description")}
           id="description"
-          className="input"
+          className={`input ${errors.description ? "input--error" : ""}`}
         />
       </div>
     </fieldset>

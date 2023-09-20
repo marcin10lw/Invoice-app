@@ -1,13 +1,14 @@
-import { UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 
 import { Invoice } from "types";
 import styles from "./index.module.scss";
 
 type BillFromProps = {
   register: UseFormRegister<Invoice>;
+  errors: FieldErrors<Invoice>;
 };
 
-const BillFrom = ({ register }: BillFromProps) => {
+const BillFrom = ({ register, errors }: BillFromProps) => {
   return (
     <div>
       <fieldset className={styles.fieldset}>
@@ -21,7 +22,9 @@ const BillFrom = ({ register }: BillFromProps) => {
             <input
               {...register("senderAddress.street")}
               id="fromStreet"
-              className="input"
+              className={`input ${
+                errors.senderAddress?.street ? "input--error" : ""
+              }`}
             />
           </div>
           <div className={styles.inputsWrapper}>
@@ -32,7 +35,9 @@ const BillFrom = ({ register }: BillFromProps) => {
               <input
                 {...register("senderAddress.city")}
                 id="fromCity"
-                className="input"
+                className={`input ${
+                  errors.senderAddress?.city ? "input--error" : ""
+                }`}
               />
             </div>
             <div className="inputGroup">
@@ -42,7 +47,9 @@ const BillFrom = ({ register }: BillFromProps) => {
               <input
                 {...register("senderAddress.postCode")}
                 id="fromPostCode"
-                className="input"
+                className={`input ${
+                  errors.senderAddress?.postCode ? "input--error" : ""
+                }`}
               />
             </div>
             <div className="inputGroup">
@@ -52,7 +59,9 @@ const BillFrom = ({ register }: BillFromProps) => {
               <input
                 {...register("senderAddress.country")}
                 id="fromCountry"
-                className="input"
+                className={`input ${
+                  errors.senderAddress?.country ? "input--error" : ""
+                }`}
               />
             </div>
           </div>
