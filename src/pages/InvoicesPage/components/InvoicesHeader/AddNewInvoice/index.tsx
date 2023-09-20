@@ -4,10 +4,10 @@ import { useContext } from "react";
 import { FormContext } from "context/FormContext";
 
 const AddNewInvoice = () => {
-  const { setIsFormOpen, setFormType } = useContext(FormContext);
+  const { openFormMenu, setFormType } = useContext(FormContext);
 
   const onButtonClick = () => {
-    setIsFormOpen(true);
+    openFormMenu();
     setFormType("create");
   };
 

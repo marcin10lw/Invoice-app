@@ -9,13 +9,13 @@ import { Invoice } from "types";
 import { invoiceSchema } from "models/Invoice";
 import BillFrom from "./BillFrom";
 import BillTo from "./BillTo";
-import styles from "./index.module.scss";
 import Details from "./Details";
 import GoBack from "common/GoBack";
 import Items from "./Items";
+import styles from "./index.module.scss";
 
 const Form = () => {
-  const { isFormOpen, setIsFormOpen } = useContext(FormContext);
+  const { isFormOpen, closeFormMenu } = useContext(FormContext);
   const {
     control,
     register,
@@ -54,13 +54,13 @@ const Form = () => {
         className={`${styles.backdrop} ${
           isFormOpen ? styles["backdrop--open"] : ""
         }`}
-        onClick={() => setIsFormOpen(false)}
+        onClick={closeFormMenu}
       />
       <div
         className={`${styles.menu} ${isFormOpen ? styles["menu--open"] : ""}`}
       >
         <div className={styles.goBackWrapper}>
-          <GoBack onClick={() => setIsFormOpen(false)} />
+          <GoBack onClick={closeFormMenu} />
         </div>
         <div className={styles.wrapper}>
           <h3 className={styles.form__heading}>New Invoice</h3>
