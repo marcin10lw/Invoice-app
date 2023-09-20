@@ -13,6 +13,7 @@ import Details from "./Details";
 import GoBack from "common/GoBack";
 import Items from "./Items";
 import styles from "./index.module.scss";
+import Buttons from "./Buttons";
 
 const Form = () => {
   const { isFormOpen, closeFormMenu } = useContext(FormContext);
@@ -77,29 +78,7 @@ const Form = () => {
             </div>
           </form>
 
-          <div className={styles.buttonsWrapper}>
-            <div className={styles.buttons}>
-              <button
-                className={`${styles.button} ${styles["button--discard"]}`}
-              >
-                Discard
-              </button>
-
-              <div className={styles.rightButtons}>
-                <button
-                  className={`${styles.button} ${styles["button--saveDraft"]}`}
-                  onClick={handleSubmit(onFormSubmit)}
-                >
-                  Save as Draft
-                </button>
-                <button
-                  className={`${styles.button} ${styles["button--saveSend"]}`}
-                >
-                  Save & Send
-                </button>
-              </div>
-            </div>
-          </div>
+          <Buttons handleSubmit={handleSubmit} onFormSubmit={onFormSubmit} />
         </div>
       </div>
     </>
